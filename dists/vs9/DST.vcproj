@@ -128,7 +128,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				GenerateManifest="false"
+				OutputFile="..\..\$(ProjectName).exe"
+				GenerateManifest="true"
 				GenerateDebugInformation="false"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
