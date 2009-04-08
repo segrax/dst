@@ -59,7 +59,7 @@ namespace script {
 		_scriptPos++;
 	}
 
-	void	_scriptHandlerCompiler::o_pusharg1(   ) {
+	void	_scriptHandlerCompiler::o_pushval(   ) {
 		*(_scriptPtr) |= 0x40;
 		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
 	}

@@ -130,7 +130,7 @@ namespace script {
 			virtual void	 o_setreturn		(   )	= 0;
 			virtual void	 o_push				(   )	= 0;
 			virtual void	 o_pusharg			(   )	= 0;
-			virtual void	 o_pusharg1			(   )   = 0;
+			virtual void	 o_pushval			(   )   = 0;
 			virtual void	 o_pushreg			(   )	= 0;
 			virtual void	 o_pushframeMinArg	(   )	= 0;
 			virtual void	 o_pushframePluArg	(   )	= 0;

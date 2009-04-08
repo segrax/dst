@@ -58,7 +58,7 @@ namespace script {
 		void			 o_setreturn		(   );
 		void			 o_push				(   );
 		void			 o_pusharg			(   );
-		void			 o_pusharg1			(   );
+		void			 o_pushval			(   );
 		void			 o_pushreg			(   );
 		void			 o_pushframeMinArg	(   );
 		void			 o_pushframePluArg	(   );

@@ -72,7 +72,7 @@ namespace script {
 		}
 	}
 
-	void	_scriptHandlerDecompiler::o_pusharg1(  ) {
+	void	_scriptHandlerDecompiler::o_pushval(  ) {
 		o_pusharg();
 	}
 

@@ -73,7 +73,7 @@ namespace script {
 			"SetReturn",		&_scriptHandler::o_setreturn,			// 1
 			"Push",				&_scriptHandler::o_push,				// 2
 			"PushArg",			&_scriptHandler::o_pusharg,				// 3
-			"PushArg1",			&_scriptHandler::o_pusharg1,			// 4
+			"PushVal",			&_scriptHandler::o_pushval,			// 4
 			"PushReg",			&_scriptHandler::o_pushreg,				// 5
 			"PushFrameMinArg",	&_scriptHandler::o_pushframeMinArg,		// 6
 			"PushFramePluArg",	&_scriptHandler::o_pushframePluArg,		// 7
