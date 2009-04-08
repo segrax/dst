@@ -107,15 +107,3 @@ const char *nameUnitDetails[0x14] = {
 	"DoesTurretRotate",          
 	"CheckIfHuman"              
 };
-
-
-// Endian Functions
-word	readWord( const void *buffer ) {
-	const byte *byteNext = (const byte *) buffer;
-	return (byteNext[0] << 8) + byteNext[1];
-}
-
-word	swapWord(  word buffer ) {
-	const byte *byteNext = (const byte *) &buffer;
-	return (byteNext[0] << 8) + byteNext[1];
-}

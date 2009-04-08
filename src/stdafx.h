@@ -29,19 +29,24 @@
 #include <vector>
 #include <sstream>
 
-
 using namespace std;
-
 
 typedef	unsigned char	byte;
 typedef unsigned short	word;
-typedef unsigned long	dword;
 
-//		Endian functions
-word	readWord(  const void *buffer );
-dword	readDWord( const void *buffer );
-word	swapWord(  word buffer );
-dword	swapDWord( dword buffer );
+// Endian functions
+// Read a word from the buffer
+inline word	readWord( const void *buffer ) {
+	const byte *wordByte = (const byte *) buffer;
+	return (wordByte[0] << 8) + wordByte[1];
+}
+
+// Endian swap a word
+inline word	swapWord(  word buffer ) {
+	const byte *wordByte = (const byte *) &buffer;
+	return (wordByte[0] << 8) + wordByte[1];
+}
+
 
 enum _scriptTypes {
 	_scriptBUILD = 0,

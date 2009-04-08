@@ -73,7 +73,7 @@ namespace script {
 			"SetReturn",		&_scriptHandler::o_setreturn,			// 1
 			"Push",				&_scriptHandler::o_push,				// 2
 			"PushArg",			&_scriptHandler::o_pusharg,				// 3
-			"PushVal",			&_scriptHandler::o_pushval,			// 4
+			"PushVal",			&_scriptHandler::o_pushval,				// 4
 			"PushReg",			&_scriptHandler::o_pushreg,				// 5
 			"PushFrameMinArg",	&_scriptHandler::o_pushframeMinArg,		// 6
 			"PushFramePluArg",	&_scriptHandler::o_pushframePluArg,		// 7
@@ -186,7 +186,7 @@ namespace script {
 			"Dock?",					&_scriptHandler::o_execute_Unit_Null,					// 1E
 			"EMCDataTest?",				&_scriptHandler::o_execute_Unit_Null,					// 1F
 			"CheckHarvestReturn",		&_scriptHandler::o_execute_Unit_Null,					// 20
-			"CreateSoldier?",			&_scriptHandler::o_execute_Unit_Null,					// 21
+			"CreateSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
 			"DeliverToBuilding",		&_scriptHandler::o_execute_Unit_Null,					// 22
 			"PlaceInUnit",				&_scriptHandler::o_execute_Unit_Null,					// 23
 			"CarryAllHoldingClear",		&_scriptHandler::o_execute_Unit_Null,					// 24
