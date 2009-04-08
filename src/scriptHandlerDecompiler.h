@@ -38,7 +38,7 @@ namespace script {
 		bool			 scriptNextStart( );				// Are we at the start of a section?
 		bool			 scriptLoad();						// 
 
-		inline void			 dataPrint( word data ) {		// Print a word to screen in decimal
+		inline void		 dataPrint( word data ) {			// Print a word to screen in decimal
 			if( !_modePreProcess )
 				_destinationFile << dec << uppercase  << data;
 		}

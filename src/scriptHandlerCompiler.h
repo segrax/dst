@@ -42,7 +42,7 @@ namespace script {
 
 	private:
 		// Opcodes
-		void			 o_goto				(  );					
+		void			 o_goto				(   );					
 		void			 o_setreturn		(   );
 		void			 o_push				(   );
 		void			 o_pusharg			(   );
