@@ -29,12 +29,14 @@
 using namespace script;
 
 int main( int argc, char *argv[]) {
+	cout << "Dune II Script Tools" << endl << endl;
 
 	if(argc < 3) {
-		cout << "usage:" << endl;
+		cout << "Usage:" << endl;
 		cout << "d: decompile" << endl;
 		cout << "c: compile" << endl;
-		cout << "dst.exe d script.emc" << endl;
+		cout << "dst d script.emc" << endl;
+		cout << "dst c script.txt" << endl;
 		return 2;
 	}
 
@@ -42,12 +44,16 @@ int main( int argc, char *argv[]) {
 		_scriptHandlerDecompiler script( argv[2] );
 
 		if( script.decompile( ) == false)
-			cout << "Failed!";
+			cout << "Failed" << endl;
+		else
+			cout << "Success" << endl;
 
 	} else if( tolower(*argv[1]) == 'c' ) {
 		_scriptHandlerCompiler script( argv[2] );
 
 		if( script.compile( ) == false)
-			cout << "Failed!";
+			cout << "Failed" << endl;
+		else
+			cout << "Success" << endl;
 	}
 }

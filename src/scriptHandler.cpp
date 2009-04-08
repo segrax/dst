@@ -64,6 +64,8 @@ namespace script {
 		return 0xFFFF;
 	}
 
+
+
 	// Setup the opcode name/function table
 	void _scriptHandler::opcodesSetup() {
 		static const _Opcode scriptOpcodes[0x14] = {
@@ -81,11 +83,11 @@ namespace script {
 			"PopFramePluArg",	&_scriptHandler::o_popframePluArg,		// B
 			"AddSP",			&_scriptHandler::o_spadd,				// C
 			"SubSP",			&_scriptHandler::o_spsub,				// D
-			"Execute",			&_scriptHandler::o_execute,			// E
+			"Execute",			&_scriptHandler::o_execute,				// E
 			"IfNotGoto",		&_scriptHandler::o_ifnotgoto,			// F
-			"Negate",			&_scriptHandler::o_negate,			// 10
+			"Negate",			&_scriptHandler::o_negate,				// 10
 			"Evaluate",			&_scriptHandler::o_evaluate,			// 11
-			"Return",			&_scriptHandler::o_return,			// 12
+			"Return",			&_scriptHandler::o_return,				// 12
 		};
 		
 		// The 'Evaluate' opcode functions
@@ -194,27 +196,27 @@ namespace script {
 			"MapReveal",				&_scriptHandler::o_execute_Unit_Null,					// 28
 			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
-			"Null",						&_scriptHandler::o_execute_Unit_Null,
-			"GetHoldingType",			&_scriptHandler::o_execute_Unit_Null,
-			"GetType",					&_scriptHandler::o_execute_Unit_Null,
-			"IndexGet ",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_27F98",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_28001",				&_scriptHandler::o_execute_Unit_Null,
-			"TypeCount",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_28090",				&_scriptHandler::o_execute_Unit_Null,
-			"Null",						&_scriptHandler::o_execute_Unit_Null,
-			"Null",						&_scriptHandler::o_execute_Unit_Null,
-			"GetNearObjectTypeIndex",   &_scriptHandler::o_execute_Unit_Null,
-			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,
-			"GetField64",				&_scriptHandler::o_execute_Unit_Null,
-			"Null",						&_scriptHandler::o_execute_Unit_Null,
-			"sub_2722C",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_1D0C8",				&_scriptHandler::o_execute_Unit_Null,
-			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,
-			"sub_27053",				&_scriptHandler::o_execute_Unit_Null,
-			"ObjectDistanceCalc",		&_scriptHandler::o_execute_Unit_Null,
-			"Null",						&_scriptHandler::o_execute_Unit_Null,
+			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 2B
+			"GetHoldingType",			&_scriptHandler::o_execute_Unit_Null,					// 2C
+			"GetType",					&_scriptHandler::o_execute_Unit_Null,					// 2D
+			"IndexGet ",				&_scriptHandler::o_execute_Unit_Null,					// 2E
+			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
+			"sub_27F98",				&_scriptHandler::o_execute_Unit_Null,					// 30
+			"sub_28001",				&_scriptHandler::o_execute_Unit_Null,					// 31
+			"TypeCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
+			"sub_28090",				&_scriptHandler::o_execute_Unit_Null,					// 33
+			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 34
+			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 35
+			"GetNearObjectTypeIndex",   &_scriptHandler::o_execute_Unit_Null,					// 36
+			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,					// 37
+			"GetField64",				&_scriptHandler::o_execute_Unit_Null,					// 38
+			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
+			"sub_2722C",				&_scriptHandler::o_execute_Unit_Null,					// 3A
+			"sub_1D0C8",				&_scriptHandler::o_execute_Unit_Null,					// 3B
+			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,					// 3C
+			"sub_27053",				&_scriptHandler::o_execute_Unit_Null,					// 3D
+			"ObjectDistanceCalc",		&_scriptHandler::o_execute_Unit_Null,					// 3E
+			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 3F
 		};
 
 		_opcodesExecute = scriptOpcodesExecuteUnits;
@@ -242,4 +244,5 @@ namespace script {
 
 		_opcodesExecute = scriptOpcodesExecuteHouses;
 	}
+
 }

@@ -34,7 +34,7 @@ namespace script {
 			if( labelPos == -1)
 				dataPrint( _scriptData );
 			else
-				cout << "l" << _scriptLabels[labelPos]._scriptPos;
+				_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
 
 		} else {
 			if(labelPos == -1)
@@ -109,7 +109,7 @@ namespace script {
 	void	_scriptHandlerDecompiler::o_popret(   ) {
 		if( _scriptData == 1) {
 			if( !_modePreProcess )
-				cout << " (Return)";
+				_destinationFile << " (Return)";
 			return;
 
 		} else 
@@ -162,7 +162,7 @@ namespace script {
 	void	_scriptHandlerDecompiler::o_execute(   ) {
 
 		if( !_modePreProcess )
-			cout << left << _opcodesExecute[ _scriptData ].description << " ";
+			_destinationFile << left << _opcodesExecute[ _scriptData ].description << " ";
 		
 		(this->*_opcodesExecute[ _scriptData ].function)( );
 	}
@@ -181,7 +181,7 @@ namespace script {
 				if( labelPos == -1)
 					dataPrint( _scriptDataNext & 0x7FFF );
 				else
-					cout << "l" << _scriptLabels[labelPos]._scriptPos;
+					_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
 			}
 
 		} else {
@@ -194,7 +194,7 @@ namespace script {
 				if( labelPos == -1)
 					dataPrint( _scriptData );
 				else
-					cout << "l" << _scriptLabels[labelPos]._scriptPos;
+					_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
 			}
 		}
 	}
@@ -206,7 +206,7 @@ namespace script {
 	void	_scriptHandlerDecompiler::o_evaluate(   ) {
 
 		if( !_modePreProcess )
-			cout << _opcodesEvaluate[ _scriptData ].description;
+			_destinationFile << _opcodesEvaluate[ _scriptData ].description;
 
 		(this->*_opcodesEvaluate[ _scriptData ].function)( );
 	}
@@ -290,7 +290,7 @@ namespace script {
 
 	void	_scriptHandlerDecompiler::o_execute_Unit_GetDetail(  ) {
 		if( !_modePreProcess )
-			cout << nameUnitDetails[ _scriptLastPush ];
+			_destinationFile << "(" << nameUnitDetails[ _scriptLastPush ] << ")";
 	}
 
 	void	_scriptHandlerDecompiler::o_execute_House_Null(  ) {

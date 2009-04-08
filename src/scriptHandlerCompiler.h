@@ -80,10 +80,19 @@ namespace script {
 		void			 o_evaluate_DivideRemainder(   );
 		void			 o_evaluate_XOR(   );
 
-		void			 o_execute_House_Null(  );
-		void			 o_execute_Building_Null(  );
-		void			 o_execute_Unit_Null(  );
-		void			 o_execute_Unit_GetDetail(  );
+		inline void	o_execute_Unit_Null(  ) {
+
+		}
+
+		inline void	o_execute_House_Null(  ) {
+			
+		}
+		
+		inline void	o_execute_Building_Null(  ) {
+
+		}
+
+		void o_execute_Unit_GetDetail(  );
 	};
 
 }

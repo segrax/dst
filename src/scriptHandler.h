@@ -62,15 +62,6 @@ namespace script {
 
 		vector<labelPosition> _scriptLabels;		// List of memory locations which can/are jumped to
 
-		void output( string text, bool endLine = true ) {
-			if( _modePreProcess )
-				return;
-
-			cout << text;
-			if( endLine )
-				cout << endl;
-		}
-
 		inline int scriptLabelGet( string label ) {
 			int pos = scriptLabel( label );
 		

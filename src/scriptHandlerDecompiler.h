@@ -23,6 +23,7 @@
 namespace script {
 	class _scriptHandlerDecompiler : public _scriptHandler {
 	private:
+		ofstream		 _destinationFile;
 		word			 _scriptLastPush;			// Last push operation value
 
 		// Runtime Data
@@ -39,7 +40,7 @@ namespace script {
 
 		inline void			 dataPrint( word data ) {		// Print a word to screen in decimal
 			if( !_modePreProcess )
-				cout << dec << uppercase  << data;
+				_destinationFile << dec << uppercase  << data;
 		}
 
 		// Public Functions

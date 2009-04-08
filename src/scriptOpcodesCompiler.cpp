@@ -28,7 +28,7 @@ namespace script {
 
 	void	_scriptHandlerCompiler::o_goto(   ) {
 		int labelPos = scriptLabelGet( _currentLine );
-		
+
 		*(_scriptPtr) |= 0x80;
 		*(_scriptPtr) |= swapWord(labelPos);
 
@@ -132,7 +132,7 @@ namespace script {
 
 //		cout << left << _opcodesExecute[ _scriptData ].description << " ";
 		
-	//	(this->*_opcodesExecute[ _scriptData ].function)( );
+		(this->*_opcodesExecute[ opcode ].function)( );
 	}
 
 	void	_scriptHandlerCompiler::o_ifnotgoto(   ) {
@@ -235,21 +235,9 @@ namespace script {
 
 	}
 
-	void	_scriptHandlerCompiler::o_execute_House_Null(  ) {
-
-	}
-
-	void	_scriptHandlerCompiler::o_execute_Building_Null(  ) {
-
-	}
-
-	void	_scriptHandlerCompiler::o_execute_Unit_Null(  ) {
-
-	}
-
 	void	_scriptHandlerCompiler::o_execute_Unit_GetDetail(  ) {
-		
-		//cout << nameUnitDetails[ _scriptLastPush ];
+		static string	detailName;
+		*_sourceFile >> detailName;
 	}
 
 }

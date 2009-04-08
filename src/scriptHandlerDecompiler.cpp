@@ -27,15 +27,27 @@
 namespace script {
 
 	_scriptHandlerDecompiler::_scriptHandlerDecompiler( const char *fileName ) : _scriptHandler(fileName) {
+		string	sourceFilename = string(_fileName), targetFilename;
+		int		posPeriod = sourceFilename.find(".");
+
+		// Prepare output filename
+		if(posPeriod == string::npos)
+			posPeriod = sourceFilename.length() - 1;
+
+		targetFilename = sourceFilename.substr( 0, posPeriod );
+		targetFilename.append(".txt");
 
 		_scriptLastPush = 0;
 		_opcodesExecute = 0;
 
 		opcodesSetup();
+
+		// Open target file
+		_destinationFile.open( targetFilename.c_str(), ios::out );
 	}
 
 	_scriptHandlerDecompiler::~_scriptHandlerDecompiler() {
-		
+		_destinationFile.close();
 	}
 
 	bool _scriptHandlerDecompiler::scriptLoad() {
@@ -92,21 +104,21 @@ namespace script {
 		_scriptStart = (byte*) buffer;
 
 		if(_pointerCount == 0x06) {
-			cout << "[House]" << endl;
+			_destinationFile << "[House]" << endl;
 			_scriptType		 = _scriptHOUSE;
 			_objectNames	 = nameHouses;
 			opcodesHousesSetup();
 		}
 
 		if(_pointerCount == 0x13) {
-			cout << "[Build]" << endl;
+			_destinationFile << "[Build]" << endl;
 			_scriptType		 = _scriptBUILD;
 			_objectNames	 = nameStructures;
 			opcodesBuildingsSetup();
 		}
 
 		if(_pointerCount == 0x1B) {
-			cout << "[Unit]" << endl;
+			_destinationFile << "[Unit]" << endl;
 			_scriptType		 = _scriptUNIT;
 			_objectNames	 = nameUnits;
 			opcodesUnitsSetup();
@@ -124,10 +136,10 @@ namespace script {
 			// In TEAM.EMC for example, two objects use the same script
 			if( _scriptPos == (word) _headerPointers[count]) {
 				if(found==false)
-					cout << endl;
+					_destinationFile << endl;
 
 				// Write the section name in square brackets
-				cout << "[" << _objectNames[count] << "]" << endl;
+				_destinationFile << "[" << _objectNames[count] << "]" << endl;
 				found = true;
 			}
 		}
@@ -148,6 +160,8 @@ namespace script {
 
 		// Decompile the script 
 		_modePreProcess = false;
+		
+		_destinationFile << "[General]" << endl;
 
 		return scriptDecompile();
 	}
@@ -164,8 +178,6 @@ namespace script {
 		_scriptPtr		= (word*)  _scriptStart;
 		_scriptPtrEnd	= (word*) (_scriptStart + _scriptSize);
 
-		output( "[General]" );
-
 		while( _scriptPtr <  _scriptPtrEnd ) {
 
 			if( !_modePreProcess ) {
@@ -173,7 +185,7 @@ namespace script {
 
 				// Check if label location, print label if so
 				if( scriptLabel( _scriptPos ) > -1)
-					cout << "l" << _scriptPos << ":" << endl;
+					_destinationFile << "l" << _scriptPos << ":" << endl;
 			}
 
 			_scriptDataNext = 0;
@@ -204,15 +216,15 @@ namespace script {
 
 			// Print opcode
 			if( !_modePreProcess )
-				cout << setw(20) << left << _opcodes[ _opcodeCurrent ].description;
+				_destinationFile << setw(20) << left << _opcodes[ _opcodeCurrent ].description;
 
 			// Excute opcode
 			(this->*_opcodes[ _opcodeCurrent ].function)( );
 
-			//cout  << setw(20) << " ";
-			//cout  << hex << uppercase << "S: 0x" << _stackCount << endl;
+			//_destinationFile  << setw(20) << " ";
+			//_destinationFile  << hex << uppercase << "S: 0x" << _stackCount << endl;
 			if( !_modePreProcess )
-				cout << endl;
+				_destinationFile << endl;
 		}
 
 		return true;

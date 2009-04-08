@@ -235,14 +235,12 @@ namespace script {
 			}
 
 			// Check for a header pointer
-			if( ! _modePreProcess ) {
-				objectID = scriptSectionCheck();
+			objectID = scriptSectionCheck();
 
-				// object script pointer location found
-				if(objectID != -1) {
-					_headerPointers[objectID] = _scriptPos;		
-					continue;
-				}
+			// object script pointer location found
+			if(objectID != -1) {
+				_headerPointers[objectID] = _scriptPos;		
+				continue;
 			}
 
 			// Find the opcode in the opcode table
@@ -281,6 +279,10 @@ namespace script {
 
 			// Execute opcode call
 			(this->*_opcodes[ _opcode ].function)( );
+
+			// Debugging Use
+			//if( ((byte*) _scriptPtr) - _scriptBuffer > 0x3DA)
+				//cout << "a";
 
 			// Next Line Number
 			_scriptPos++;

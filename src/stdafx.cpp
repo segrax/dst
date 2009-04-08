@@ -22,6 +22,94 @@
 
 #include "stdafx.h"
 
+// Object Names
+const char *nameHouses[0x06] = {
+	"Harkonnen",
+	"Atreides",
+	"Ordos",
+	"Fremen",
+	"Sardaukar",
+	"Mercenary"
+};
+
+const char *nameStructures[0x13] = {
+	"Concrete",
+	"Concrete4",
+	"Palace",
+	"LightFactory",
+	"HeavyFactory",
+	"Hi-Tech",
+	"IX",
+	"WOR",
+	"ConstructionYard",
+	"Windtrap",
+	"Barracks",
+	"Starport",
+	"Refinery",
+	"Repair",
+	"Wall",
+	"Turret",
+	"R-Turret",
+	"SpiceSilo",
+	"Outpost"
+};
+
+const char *nameUnits[0x1B] = {
+	"Carryall",
+	"Ornithopter",
+	"Infantry",
+	"Troopers",
+	"Soldier",
+	"Trooper",
+	"Saboteur",
+	"Launcher",
+	"Deviator",
+	"Tank",
+	"SiegeTank",
+	"Devastator",
+	"SonicTank",
+	"Trike",
+	"RaiderTrike",	
+	"Quad",
+	"Harvester",
+	"MCV",
+	"DeathHand",
+	"Rocket",
+	"ARocket",
+	"GRocket",
+	"MiniRocket",
+	"Bullet",
+	"SonicBlast",
+	"Sandworm",
+	"Frigate"
+};
+
+// Unit GetDetail Function DetailNames
+const char *nameUnitDetails[0x14] = {
+	"HitPointRepairCalc?",   
+	"BuildingTypeIndex",     
+	"WeaponRange",           
+	"IndexGet",              
+	"Field64Get",            
+	"AttackObjectIndexTypeGet",                   
+	"Return",                  
+	"TypeIndex",             
+	"IndexGetAsObject",      
+	"Field6BGet",                 
+	"loc_27562",          
+	"Field49AndField4BGet",                 
+	"WeaponCoolDown?",                 
+	"Field36And4h",               
+	"HouseIDGet",            
+	"loc_275C1",                 
+	"TurretGet?",     
+	"loc_2752F",                 
+	"DoesTurretRotate",          
+	"CheckIfHuman"              
+};
+
+
+// Endian Functions
 word	readWord( const void *buffer ) {
 	const byte *byteNext = (const byte *) buffer;
 	return (byteNext[0] << 8) + byteNext[1];
@@ -30,15 +118,4 @@ word	readWord( const void *buffer ) {
 word	swapWord(  word buffer ) {
 	const byte *byteNext = (const byte *) &buffer;
 	return (byteNext[0] << 8) + byteNext[1];
-}
-
-dword	readDWord( const void *buffer ) {
-	const byte *dwordNext = (const byte *) buffer;
-    return (dwordNext[0] << 24) + (dwordNext[1] << 16) + (dwordNext[2] << 8) + (dwordNext[3]);
-}
-
-dword	swapDWord( dword buffer ) {
-	const word *DW = (word*) &buffer;
-
-	return (DW[0] << 16) + (DW[1]);
 }

@@ -57,6 +57,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				OutputFile="..\..\$(ProjectName)_debug.exe"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -108,12 +109,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
+				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				StringPooling="true"
+				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="false"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
