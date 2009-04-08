@@ -109,17 +109,11 @@ namespace script {
 	void	_scriptHandlerCompiler::o_spadd(   ) {
 		*(_scriptPtr) |= 0x40;
 		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
-
-		//dataPrint( _scriptData );
-		//_stackCount += (_scriptData & 0xF);
 	}
 
 	void	_scriptHandlerCompiler::o_spsub(   ) {
 		*(_scriptPtr) |= 0x40;
 		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
-
-		//dataPrint( _scriptData );
-		//_stackCount -= (_scriptData & 0xF);
 	}
 
 	void	_scriptHandlerCompiler::o_execute(   ) {
@@ -129,8 +123,6 @@ namespace script {
 		opcode = scriptOpcodeFind( _currentLine, _opcodesExecute );
 		
 		*(_scriptPtr) |= swapWord(opcode);
-
-//		cout << left << _opcodesExecute[ _scriptData ].description << " ";
 		
 		(this->*_opcodesExecute[ opcode ].function)( );
 	}
@@ -138,7 +130,6 @@ namespace script {
 	void	_scriptHandlerCompiler::o_ifnotgoto(   ) {
 		int labelPos = scriptLabelGet( _currentLine );
 		int line = 0;
-		//stringstream in;
 
 		*(_scriptPtr) |= 0x20;
 

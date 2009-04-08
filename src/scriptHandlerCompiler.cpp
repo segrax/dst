@@ -223,17 +223,6 @@ namespace script {
 			// Read next line from sourcecode file
 			*_sourceFile >> _currentLine;
 
-			// Check for label
-			if( _currentLine.find( ":" ) != string::npos ) {
-
-				// Add the label to the labels vector
-				if( _modePreProcess )
-					scriptLabelAdd( _currentLine, _scriptPos );
-
-				// Next line
-				continue;
-			}
-
 			// Check for a header pointer
 			objectID = scriptSectionCheck();
 
@@ -248,6 +237,13 @@ namespace script {
 			while(_opcode == 0xFFFF) {
 				_opcode = scriptOpcodeFind( _currentLine, _opcodes );
 				
+				// Check for label
+				if( _modePreProcess && _opcode == 0xFFFF && _currentLine.find( ":" ) != string::npos ) {
+
+					// Add the label to the labels vector
+					scriptLabelAdd( _currentLine, _scriptPos );
+				}
+
 				// Did we reach end of file?
 				if(_sourceFile->eof() == true)
 					break;
@@ -281,8 +277,8 @@ namespace script {
 			(this->*_opcodes[ _opcode ].function)( );
 
 			// Debugging Use
-			//if( ((byte*) _scriptPtr) - _scriptBuffer > 0x3DA)
-				//cout << "a";
+			//if( ((byte*) _scriptPtr) - _scriptBuffer > 0x12F)
+			//	cout << "a";
 
 			// Next Line Number
 			_scriptPos++;
