@@ -73,7 +73,7 @@ namespace script {
 		}
 
 		inline int scriptLabel( string label ) {
-			vector<labelPosition>::iterator				labelIT;
+			static  vector<labelPosition>::iterator		labelIT;
 			int											pos = 0;
 
 			for( labelIT = _scriptLabels.begin(); labelIT != _scriptLabels.end(); labelIT++, pos++ ) {
@@ -87,7 +87,7 @@ namespace script {
 		}
 
 		inline int scriptLabel( word position ) {
-			vector<labelPosition>::iterator				labelIT;
+			static vector<labelPosition>::iterator		labelIT;
 			int											pos = 0;
 
 			for( labelIT = _scriptLabels.begin(); labelIT != _scriptLabels.end(); labelIT++, pos++ ) {

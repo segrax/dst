@@ -62,6 +62,7 @@
 				Name="VCLinkerTool"
 				OutputFile="..\..\$(ProjectName)_debug.exe"
 				GenerateDebugInformation="true"
+				SetChecksum="true"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -120,7 +121,7 @@
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="false"
-				RuntimeTypeInfo="true"
+				RuntimeTypeInfo="false"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
