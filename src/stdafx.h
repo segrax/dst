@@ -54,6 +54,7 @@ enum _scriptTypes {
 	_scriptHOUSE
 };
 
+extern const char *version;
 extern const char *nameHouses[0x06];
 extern const char *nameStructures[0x13];
 extern const char *nameUnits[0x1B];

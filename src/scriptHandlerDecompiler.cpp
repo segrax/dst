@@ -198,7 +198,7 @@ namespace script {
 			_opcodeCurrent &= 0x1F;
 			
 			if( _scriptData & 0x8000 ) {
-				// Opcode uses 14 bits
+				// Opcode uses 13 bits
 				_opcodeCurrent = 0;
 				_scriptData &= 0x7FFF;
 			} else

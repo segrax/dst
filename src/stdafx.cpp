@@ -22,6 +22,8 @@
 
 #include "stdafx.h"
 
+const char *version = "1.0";
+
 // Object Names
 const char *nameHouses[0x06] = {
 	"Harkonnen",

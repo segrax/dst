@@ -64,8 +64,6 @@ namespace script {
 		return 0xFFFF;
 	}
 
-
-
 	// Setup the opcode name/function table
 	void _scriptHandler::opcodesSetup() {
 		static const _Opcode scriptOpcodes[0x14] = {

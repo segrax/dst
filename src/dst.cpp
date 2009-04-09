@@ -25,19 +25,18 @@
 #include "scriptHandlerDecompiler.h"
 #include "scriptHandlerCompiler.h"
 
-
 using namespace script;
 
 int main( int argc, char *argv[]) {
-	cout << "Dune II Script Tools" << endl << endl;
+	cout << "Dune II Script Tools v" << version << endl << endl;
 
 	if(argc < 3) {
 		cout << "Usage:" << endl;
-		cout << "d: decompile" << endl;
-		cout << "c: compile" << endl;
+		cout << "d: Decompile" << endl;
+		cout << "c: Compile" << endl;
 		cout << "dst d script.emc" << endl;
 		cout << "dst c script.txt" << endl;
-		return 2;
+		return 0;
 	}
 
 	if( tolower(*argv[1]) == 'd' ) {

@@ -42,14 +42,6 @@ namespace script {
 	void	_scriptHandlerCompiler::o_push(   ) {
 		*(_scriptPtr) |= 0x40;
 		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
-
-		/*if(_scriptDataNext) {
-			_scriptLastPush = _scriptDataNext;
-			dataPrint( _scriptDataNext );
-		} else {
-			_scriptLastPush = _scriptData;
-			dataPrint( _scriptData );
-		}*/
 	}
 
 	void	_scriptHandlerCompiler::o_pusharg(   ) {
