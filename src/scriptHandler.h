@@ -49,11 +49,12 @@ namespace script {
 		unsigned short int	 _pointerCount;			// Number of script "function" pointers
 		size_t				 _scriptSize;			// Size of script
 
-		bool			 _modePreProcess;			// In Pre-Process mode?
+		volatile bool			 _modePreProcess;			// In Pre-Process mode?
 
 		const char	   **_objectNames;				// Pointer to current script object names
 		const char	   **_objectFunctions;			// Pointer to current script executable functions
 
+		size_t			 _lineCount;				
 		const byte		*_scriptBuffer;				// script byte stream
 		word			*_scriptPtr;				// Pointer in _scriptBuffer to current opcode
 		word			 _scriptPos;				// Line number of current opcode
@@ -72,7 +73,7 @@ namespace script {
 		}
 
 		inline int scriptLabel( string label ) {
-			static vector<labelPosition>::iterator		labelIT;
+			vector<labelPosition>::iterator				labelIT;
 			int											pos = 0;
 
 			for( labelIT = _scriptLabels.begin(); labelIT != _scriptLabels.end(); labelIT++, pos++ ) {
@@ -86,7 +87,7 @@ namespace script {
 		}
 
 		inline int scriptLabel( word position ) {
-			static vector<labelPosition>::iterator		labelIT;
+			vector<labelPosition>::iterator				labelIT;
 			int											pos = 0;
 
 			for( labelIT = _scriptLabels.begin(); labelIT != _scriptLabels.end(); labelIT++, pos++ ) {
@@ -101,10 +102,14 @@ namespace script {
 
 		inline void scriptLabelAdd( string label, word position ) {
 			labelPosition	LP;
-			int				labelPos = scriptLabel( position );
+			int				labelPos	= scriptLabel( position );
+			int				labelEndPos = label.find(":");
+
+			if(labelEndPos == string::npos)
+				labelEndPos = label.length();
 
 			if( labelPos == -1 ) {
-				LP._name		= label.substr( 0, label.size() -1 );
+				LP._name		= label.substr( 0, labelEndPos);
 				LP._scriptPos	= position;
 
 				_scriptLabels.push_back( LP );
@@ -117,8 +122,15 @@ namespace script {
 							~_scriptHandler();
 		
 			word			 scriptOpcodeFind(  string opcodeStr, const _Opcode *opcodes );	// Search the opcode table for 'Opcode' string
+			
+			inline size_t labelCountGet() {
+				return _lineCount;
+	
+			}
+
 			// Virtual Functions
 
+			virtual bool	 execute() = 0;
 			// Opcode Prepare
 			virtual void	 opcodesSetup();
 			virtual void	 opcodesBuildingsSetup();

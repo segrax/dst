@@ -48,7 +48,7 @@ namespace script {
 						 _scriptHandlerDecompiler( const char *fileName );
 						~_scriptHandlerDecompiler();
 
-		bool			 decompile();						// Decompile a script
+		bool			 execute();							// Decompile a script
 
 
 		//					Opcode Functions

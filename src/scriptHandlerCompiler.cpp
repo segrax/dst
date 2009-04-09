@@ -133,9 +133,11 @@ namespace script {
 		return -1;
 	}
 
-	bool _scriptHandlerCompiler::compile() {
+	bool _scriptHandlerCompiler::execute() {
 
+		_modePreProcess = true;
 		cout << "Preprocessing " << _fileName << endl;
+
 		// Run the script compiler in pre process mode (find all jump locations)
 		if(scriptCompile() == false)
 			return false;
@@ -165,6 +167,8 @@ namespace script {
 		char	nextChar;
 		int		objectID = 0;
 
+		_lineCount = 0;
+
 		// Reset the script position and the size
 		_scriptSize		= 0;
 		_scriptPos		= 0;
@@ -182,6 +186,7 @@ namespace script {
 
 		// Read file type line
 		*_sourceFile >> _currentLine;
+		_lineCount++;
 
 		// House Script
 		if(_currentLine == "[House]") {
@@ -225,22 +230,21 @@ namespace script {
 			// Read next line from sourcecode file
 			*_sourceFile >> _currentLine;
 
-			// Check for a header pointer
-			objectID = scriptSectionCheck();
-
-			// object script pointer location found
-			if(objectID != -1) {
-				_headerPointers[objectID] = _scriptPos;		
-				continue;
-			}
-
 			// Find the opcode in the opcode table
 			_opcode = 0xFFFF;
 			while(_opcode == 0xFFFF) {
+				// Check for a header pointer
+				objectID = scriptSectionCheck();
+
+				// object script pointer location found
+				if(objectID != -1)
+					_headerPointers[objectID] = _scriptPos;		
+
+				// Find the opcode
 				_opcode = scriptOpcodeFind( _currentLine, _opcodes );
 				
 				// Check for label
-				if( _modePreProcess && _opcode == 0xFFFF && _currentLine.find( ":" ) != string::npos ) {
+				if( _modePreProcess &&  (_currentLine.find( ":" ) != string::npos) ) {
 
 					// Add the label to the labels vector
 					scriptLabelAdd( _currentLine, _scriptPos );
@@ -267,10 +271,13 @@ namespace script {
 				// Is it end of line? or is it a parameter?
 				if(nextChar != '\n')
 					*_sourceFile >> _currentLine;
+
 			}
 
 			if(_opcode == 0xFFFF)
 				break;
+			
+			_lineCount++;
 
 			// Write bytecode
 			*_scriptPtr = _opcode;

@@ -28,7 +28,9 @@
 using namespace script;
 
 int main( int argc, char *argv[]) {
-	bool result = false;
+	bool			result = false;
+	_scriptHandler *script = 0;
+
 	cout << "Dune II Script Tools v" << version << endl << endl;
 
 	if(argc < 3) {
@@ -40,19 +42,23 @@ int main( int argc, char *argv[]) {
 		return 0;
 	}
 
-	if( tolower(*argv[1]) == 'd' ) {
-		_scriptHandlerDecompiler script( argv[2] );
-		result = script.decompile( );
+	// Decompile Mode
+	if( tolower(*argv[1]) == 'd' )
+		script = new _scriptHandlerDecompiler( argv[2] );
 
-	} else if( tolower(*argv[1]) == 'c' ) {
-		_scriptHandlerCompiler script( argv[2] );
-		result = script.compile( );
-	}
+	// Compile Mode
+	else if( tolower(*argv[1]) == 'c' )
+		script = new _scriptHandlerCompiler( argv[2] );
 
+	// Do It
+	result = script->execute();
 	cout << endl;
 
-	if( !result )
+	if( !result ) {
 			cout << "Failed" << endl;
-		else
+			cout << "Line Number:" << script->labelCountGet() << endl;
+	}	else
 			cout << "Done" << endl;
+
+	delete script;
 }

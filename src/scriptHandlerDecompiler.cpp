@@ -147,7 +147,7 @@ namespace script {
 		return found;
 	}
 
-	bool _scriptHandlerDecompiler::decompile() {
+	bool _scriptHandlerDecompiler::execute() {
 		
 		cout << "Preprocessing " << _fileName << endl;
 
@@ -170,6 +170,8 @@ namespace script {
 	}
 
 	bool _scriptHandlerDecompiler::scriptDecompile( ) {
+
+		_lineCount		= 0;
 		_opcodeCurrent  = 0;
 		_scriptData		= _scriptDataNext = 0;
 		_scriptPtr		= 0;
@@ -228,6 +230,8 @@ namespace script {
 			//_destinationFile  << hex << uppercase << "S: 0x" << _stackCount << endl;
 			if( !_modePreProcess )
 				_destinationFile << endl;
+
+			_lineCount++;
 		}
 
 		return true;

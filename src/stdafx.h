@@ -27,7 +27,6 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include <sstream>
 
 using namespace std;
 
@@ -46,7 +45,6 @@ inline word	swapWord(  word buffer ) {
 	const byte *wordByte = (const byte *) &buffer;
 	return (wordByte[0] << 8) + wordByte[1];
 }
-
 
 enum _scriptTypes {
 	_scriptBUILD = 0,

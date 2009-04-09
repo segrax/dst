@@ -38,7 +38,7 @@ namespace script {
 						 _scriptHandlerCompiler( const char *fileName );
 						~_scriptHandlerCompiler();
 
-		bool			 compile();
+		bool			 execute();							// Compile a script
 
 	private:
 		// Opcodes

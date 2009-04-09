@@ -28,6 +28,10 @@ namespace script {
 
 	void	_scriptHandlerCompiler::o_goto(   ) {
 		int labelPos = scriptLabelGet( _currentLine );
+		int bb = 0;
+
+		if(!_modePreProcess && labelPos == -1)
+			*( (byte*) bb) = 01;
 
 		*(_scriptPtr) |= 0x80;
 		*(_scriptPtr) |= swapWord(labelPos);
