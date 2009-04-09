@@ -37,6 +37,8 @@ namespace script {
 		_scriptBuffer	 = 0;
 		_scriptPtr		 = 0;
 		_scriptPos		 = 0;
+
+		_modePreProcess = true;
 	}
 
 	// Destructor
