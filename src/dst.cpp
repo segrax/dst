@@ -42,16 +42,14 @@ int main( int argc, char *argv[]) {
 
 	if( tolower(*argv[1]) == 'd' ) {
 		_scriptHandlerDecompiler script( argv[2] );
-		
-		cout << "Decompiling " << argv[2] << endl;
 		result = script.decompile( );
 
 	} else if( tolower(*argv[1]) == 'c' ) {
 		_scriptHandlerCompiler script( argv[2] );
-
-		cout << "Compiling " << argv[2] << endl;
 		result = script.compile( );
 	}
+
+	cout << endl;
 
 	if( !result )
 			cout << "Failed" << endl;

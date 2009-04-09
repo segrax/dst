@@ -149,6 +149,8 @@ namespace script {
 
 	bool _scriptHandlerDecompiler::decompile() {
 		
+		cout << "Preprocessing " << _fileName << endl;
+
 		// Load the script into a _scriptBuffer, then read the header information
 		scriptLoad();
 		headerRead();
@@ -163,6 +165,7 @@ namespace script {
 		
 		_destinationFile << "[General]" << endl;
 
+		cout << "Decompiling....." << endl;
 		return scriptDecompile();
 	}
 

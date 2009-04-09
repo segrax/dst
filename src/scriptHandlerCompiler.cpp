@@ -135,6 +135,7 @@ namespace script {
 
 	bool _scriptHandlerCompiler::compile() {
 
+		cout << "Preprocessing " << _fileName << endl;
 		// Run the script compiler in pre process mode (find all jump locations)
 		if(scriptCompile() == false)
 			return false;
@@ -150,6 +151,7 @@ namespace script {
 		// Disable PreProcess mode
 		_modePreProcess = false;
 
+		cout << "Compiling....." << endl;
 		// Properly compile the script
 		if(scriptCompile() == false )
 			return false;
