@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra
+ * Copyright (C) 2009 segra		<segra@strobs.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,9 +44,9 @@ namespace script {
 		// Opcodes
 		void			 o_goto				(   );					
 		void			 o_setreturn		(   );
+		void			 o_pushOp			(   );
 		void			 o_push				(   );
-		void			 o_pusharg			(   );
-		void			 o_pushval  		(   );
+		void			 o_pushWord  		(   );
 		void			 o_pushreg			(   );
 		void			 o_pushframeMinArg	(   );
 		void			 o_pushframePluArg	(   );

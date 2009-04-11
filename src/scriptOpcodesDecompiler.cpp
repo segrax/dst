@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra
+ * Copyright (C) 2009 segra		<segra@strobs.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ namespace script {
 		}
 	}
 
-	void	_scriptHandlerDecompiler::o_push(   ) {
+	void	_scriptHandlerDecompiler::o_pushOp(   ) {
 		word data = _scriptData;
 		if(_scriptData == 0)
 			data = _scriptDataNext;
@@ -60,7 +60,7 @@ namespace script {
 		dataPrint(data);
 	}
 
-	void	_scriptHandlerDecompiler::o_pusharg(   ) {
+	void	_scriptHandlerDecompiler::o_push(  ) {
 		_stackCount--;
 
 		if(_scriptDataNext) {
@@ -72,8 +72,8 @@ namespace script {
 		}
 	}
 
-	void	_scriptHandlerDecompiler::o_pushval(  ) {
-		o_pusharg();
+	void	_scriptHandlerDecompiler::o_pushWord() {
+		o_push();
 	}
 
 	void	_scriptHandlerDecompiler::o_pushreg(   ) {

@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra
+ * Copyright (C) 2009 segra		<segra@strobs.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,21 +43,28 @@ namespace script {
 
 	}
 
-	void	_scriptHandlerCompiler::o_push(   ) {
+	void	_scriptHandlerCompiler::o_pushOp(   ) {
 		*(_scriptPtr) |= 0x40;
 		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
 	}
 
-	void	_scriptHandlerCompiler::o_pusharg(   ) {
+	void	 _scriptHandlerCompiler::o_pushWord(   ) {
 		*(_scriptPtr) |= 0x20;
 		*(_scriptPtr+1) |= swapWord(atoi(_currentLine.c_str()));
 		_scriptPtr++;
 		_scriptPos++;
 	}
 
-	void	_scriptHandlerCompiler::o_pushval(   ) {
+	void	_scriptHandlerCompiler::o_push(   ) {
+		size_t value = atoi(_currentLine.c_str());
+
+		// Just incase, we dont want to corrupt the opcode
+		if(value > 0xFF)
+			return o_pushWord();
+
+		*(_scriptPtr)  = 0x04;
 		*(_scriptPtr) |= 0x40;
-		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
+		*(_scriptPtr) |= swapWord(value);
 	}
 
 	void	_scriptHandlerCompiler::o_pushreg(   ) {

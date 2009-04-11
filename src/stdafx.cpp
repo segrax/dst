@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra
+ * Copyright (C) 2009 segra		<segra@strobs.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 
 #include "stdafx.h"
 
-const char *version = "1.0";
+const char *version = "1.1";
 
 // Object Names
 const char *nameHouses[0x06] = {

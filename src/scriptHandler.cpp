@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra
+ * Copyright (C) 2009 segra		<segra@strobs.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,9 +71,9 @@ namespace script {
 		static const _Opcode scriptOpcodes[0x14] = {
 			"Goto",				&_scriptHandler::o_goto,				// 0
 			"SetReturn",		&_scriptHandler::o_setreturn,			// 1
-			"Push",				&_scriptHandler::o_push,				// 2
-			"PushArg",			&_scriptHandler::o_pusharg,				// 3
-			"PushVal",			&_scriptHandler::o_pushval,				// 4
+			"PushOp",			&_scriptHandler::o_pushOp,				// 2
+			"PushWord",			&_scriptHandler::o_pushWord,			// 3
+			"Push",				&_scriptHandler::o_push,				// 4
 			"PushReg",			&_scriptHandler::o_pushreg,				// 5
 			"PushFrameMinArg",	&_scriptHandler::o_pushframeMinArg,		// 6
 			"PushFramePluArg",	&_scriptHandler::o_pushframePluArg,		// 7
@@ -161,7 +161,7 @@ namespace script {
 			"sub_27186",				&_scriptHandler::o_execute_Unit_Null,					// 5
 			"sub_27127",				&_scriptHandler::o_execute_Unit_Null,					// 6
 			"sub_27019",				&_scriptHandler::o_execute_Unit_Null,					// 7
-			"Attack?",					&_scriptHandler::o_execute_Unit_Null,					// 8
+			"Attack",					&_scriptHandler::o_execute_Unit_Null,					// 8
 			"MCVDeploy",				&_scriptHandler::o_execute_Unit_Null,					// 9
 			"SidebarCmd4",				&_scriptHandler::o_execute_Unit_Null,					// A
 			"Flash",					&_scriptHandler::o_execute_Unit_Null,					// B
@@ -192,7 +192,7 @@ namespace script {
 			"CarryAllHoldingClear",		&_scriptHandler::o_execute_Unit_Null,					// 24
 			"BuildingFreeFind",			&_scriptHandler::o_execute_Unit_Null,					// 25
 			"PlaySFX",					&_scriptHandler::o_execute_Unit_Null,					// 26
-			"Text?",					&_scriptHandler::o_execute_Unit_Null,					// 27
+			"DestroyedMessage",			&_scriptHandler::o_execute_Unit_Null,					// 27
 			"MapReveal",				&_scriptHandler::o_execute_Unit_Null,					// 28
 			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
@@ -201,7 +201,7 @@ namespace script {
 			"GetType",					&_scriptHandler::o_execute_Unit_Null,					// 2D
 			"IndexGet ",				&_scriptHandler::o_execute_Unit_Null,					// 2E
 			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
-			"sub_27F98",				&_scriptHandler::o_execute_Unit_Null,					// 30
+			"GetMapPieceForUnit",		&_scriptHandler::o_execute_Unit_Null,					// 30
 			"sub_28001",				&_scriptHandler::o_execute_Unit_Null,					// 31
 			"TypeCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
 			"sub_28090",				&_scriptHandler::o_execute_Unit_Null,					// 33
@@ -211,8 +211,8 @@ namespace script {
 			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,					// 37
 			"GetField64",				&_scriptHandler::o_execute_Unit_Null,					// 38
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
-			"sub_2722C",				&_scriptHandler::o_execute_Unit_Null,					// 3A
-			"sub_1D0C8",				&_scriptHandler::o_execute_Unit_Null,					// 3B
+			"GetAttackObjectIndexType",	&_scriptHandler::o_execute_Unit_Null,					// 3A
+			"ObjectIsValid?",			&_scriptHandler::o_execute_Unit_Null,					// 3B
 			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,					// 3C
 			"sub_27053",				&_scriptHandler::o_execute_Unit_Null,					// 3D
 			"ObjectDistanceCalc",		&_scriptHandler::o_execute_Unit_Null,					// 3E
