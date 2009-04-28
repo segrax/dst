@@ -131,7 +131,7 @@ namespace script {
 		bool found = false;
 
 		// Loop through each pointer and write the section names out
-		for( int count = 0; count <= _pointerCount; count++ ) {
+		for( int count = 0; count < _pointerCount; count++ ) {
 
 			// In TEAM.EMC for example, two objects use the same script
 			if( _scriptPos == (word) _headerPointers[count]) {
