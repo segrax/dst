@@ -214,7 +214,7 @@ namespace script {
 
 		// Prepare memory for scriptBuffer and headerPointers
 		_headerPointers = new word[_pointerCount];
-		_scriptBuffer	= new byte[0x100000];
+		_scriptBuffer	= new byte[0x100000];			// should be big enough :p
 
 		// Set the script pointer to the script starting position (in buffer)
 		_scriptPtr		= (word*) (_scriptBuffer + (_pointerCount*2) + 0x1C);
