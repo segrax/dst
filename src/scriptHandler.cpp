@@ -184,7 +184,7 @@ namespace script {
 			"sub_25F3F",				&_scriptHandler::o_execute_Unit_Null,					// 1C
 			"DamageGet",				&_scriptHandler::o_execute_Unit_Null,					// 1D
 			"Dock?",					&_scriptHandler::o_execute_Unit_Null,					// 1E
-			"EMCDataTest?",				&_scriptHandler::o_execute_Unit_Null,					// 1F
+			"TestState100",				&_scriptHandler::o_execute_Unit_Null,					// 1F
 			"CheckHarvestReturn",		&_scriptHandler::o_execute_Unit_Null,					// 20
 			"CreateSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
 			"DeliverToBuilding",		&_scriptHandler::o_execute_Unit_Null,					// 22
