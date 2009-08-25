@@ -89,7 +89,7 @@ const char *nameUnits[0x1B] = {
 // Unit GetDetail Function DetailNames
 const char *nameUnitDetails[0x14] = {
 	"HitPointRepairCalc?",   
-	"BuildingTypeIndex",     
+	"HoldingTypeIndex",     
 	"WeaponRange",           
 	"IndexGet",              
 	"Field64Get",            
