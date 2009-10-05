@@ -52,10 +52,16 @@ namespace script {
 
 	void	_scriptHandlerDecompiler::o_pushOp(   ) {
 		word data = _scriptData;
-		if(_scriptData == 0)
+		if(_scriptData == 0) {
 			data = _scriptDataNext;
 
-		_stackCount--;
+			_stackCount--;
+	
+		}
+		if(_scriptData == 1) {
+			_stackCount--;
+			_stackCount--;
+		}
 
 		dataPrint(data);
 	}

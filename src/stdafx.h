@@ -53,7 +53,7 @@ enum _scriptTypes {
 };
 
 extern const char *version;
-extern const char *nameHouses[0x06];
+extern const char *nameTeams[0x06];
 extern const char *nameStructures[0x13];
 extern const char *nameUnits[0x1B];
 extern const char *nameUnitDetails[0x14];

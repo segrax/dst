@@ -188,11 +188,11 @@ namespace script {
 		_lineCount++;
 
 		// House Script
-		if(_currentLine == "[House]") {
+		if(_currentLine == "[Teams]") {
 			_scriptType		 = _scriptHOUSE;
 			_pointerCount = 0x06;
 
-			_objectNames	 = nameHouses;
+			_objectNames	 = nameTeams;
 			opcodesHousesSetup();
 		}
 

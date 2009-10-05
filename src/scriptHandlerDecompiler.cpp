@@ -104,9 +104,9 @@ namespace script {
 		_scriptStart = (byte*) buffer;
 
 		if(_pointerCount == 0x06) {
-			_destinationFile << "[House]" << endl;
+			_destinationFile << "[Teams]" << endl;
 			_scriptType		 = _scriptHOUSE;
-			_objectNames	 = nameHouses;
+			_objectNames	 = nameTeams;
 			opcodesHousesSetup();
 		}
 

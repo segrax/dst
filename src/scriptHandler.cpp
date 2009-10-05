@@ -154,18 +154,18 @@ namespace script {
 	void _scriptHandler::opcodesUnitsSetup() {
 		static const _Opcode scriptOpcodesExecuteUnits[0x64] = {
 			"GetDetail",				&_scriptHandler::o_execute_Unit_GetDetail,				// 0 	
-			"sub_272E7",				&_scriptHandler::o_execute_Unit_Null,					// 1
+			"actionStart",				&_scriptHandler::o_execute_Unit_Null,					// 1
 			"Text",   					&_scriptHandler::o_execute_Unit_Null,					// 2
-			"getObjectDistance?",		&_scriptHandler::o_execute_Unit_Null,					// 3
+			"ObjectDistance",			&_scriptHandler::o_execute_Unit_Null,					// 3
 			"sub_279AB",				&_scriptHandler::o_execute_Unit_Null,					// 4
 			"sub_27186",				&_scriptHandler::o_execute_Unit_Null,					// 5
-			"sub_27127",				&_scriptHandler::o_execute_Unit_Null,					// 6
-			"sub_27019",				&_scriptHandler::o_execute_Unit_Null,					// 7
+			"GetAngleBetween",			&_scriptHandler::o_execute_Unit_Null,					// 6
+			"BaseTurnToAngle",			&_scriptHandler::o_execute_Unit_Null,					// 7
 			"Attack",					&_scriptHandler::o_execute_Unit_Null,					// 8
 			"MCVDeploy",				&_scriptHandler::o_execute_Unit_Null,					// 9
 			"SidebarCmd4",				&_scriptHandler::o_execute_Unit_Null,					// A
 			"Flash",					&_scriptHandler::o_execute_Unit_Null,					// B
-			"sub_27638",				&_scriptHandler::o_execute_Unit_Null,					// C
+			"PathFind",					&_scriptHandler::o_execute_Unit_Null,					// C
 			"HouseCompare",				&_scriptHandler::o_execute_Unit_Null,					// D
 			"sub_26A69",				&_scriptHandler::o_execute_Unit_Null,					// E
 			"Destroy",					&_scriptHandler::o_execute_Unit_Null,					// F
@@ -177,10 +177,10 @@ namespace script {
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 15
 			"sub_2677F",				&_scriptHandler::o_execute_Unit_Null,					// 16
 			"RandomNumber",				&_scriptHandler::o_execute_Unit_Null,					// 17
-			"sub_1D3D4",				&_scriptHandler::o_execute_Unit_Null,					// 18
-			"sub_27356",				&_scriptHandler::o_execute_Unit_Null,					// 19
-			"sub_26689",				&_scriptHandler::o_execute_Unit_Null,					// 1A
-			"sub_266B9",				&_scriptHandler::o_execute_Unit_Null,					// 1B
+			"BuildingIsFree",			&_scriptHandler::o_execute_Unit_Null,					// 18
+			"SetMoveDestTurnTo",		&_scriptHandler::o_execute_Unit_Null,					// 19
+			"StopMove",					&_scriptHandler::o_execute_Unit_Null,					// 1A
+			"SpeedUpdate",				&_scriptHandler::o_execute_Unit_Null,					// 1B
 			"sub_25F3F",				&_scriptHandler::o_execute_Unit_Null,					// 1C
 			"DamageGet",				&_scriptHandler::o_execute_Unit_Null,					// 1D
 			"Dock?",					&_scriptHandler::o_execute_Unit_Null,					// 1E
@@ -189,7 +189,7 @@ namespace script {
 			"CreateSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
 			"DeliverToBuilding",		&_scriptHandler::o_execute_Unit_Null,					// 22
 			"PlaceInUnit",				&_scriptHandler::o_execute_Unit_Null,					// 23
-			"CarryAllHoldingClear",		&_scriptHandler::o_execute_Unit_Null,					// 24
+			"ScriptObjectHoldingSetToReg4",		&_scriptHandler::o_execute_Unit_Null,					// 24
 			"BuildingFreeFind",			&_scriptHandler::o_execute_Unit_Null,					// 25
 			"PlaySFX",					&_scriptHandler::o_execute_Unit_Null,					// 26
 			"DestroyedMessage",			&_scriptHandler::o_execute_Unit_Null,					// 27
@@ -197,52 +197,52 @@ namespace script {
 			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 2B
-			"GetHoldingType",			&_scriptHandler::o_execute_Unit_Null,					// 2C
-			"GetType",					&_scriptHandler::o_execute_Unit_Null,					// 2D
-			"IndexGet ",				&_scriptHandler::o_execute_Unit_Null,					// 2E
+			"GetHoldingScriptObject",	&_scriptHandler::o_execute_Unit_Null,					// 2C
+			"ScriptObjectTypeGet",		&_scriptHandler::o_execute_Unit_Null,					// 2D
+			"ScriptObjectIndexGet ",	&_scriptHandler::o_execute_Unit_Null,					// 2E
 			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
 			"GetMapPieceForUnit",		&_scriptHandler::o_execute_Unit_Null,					// 30
-			"sub_28001",				&_scriptHandler::o_execute_Unit_Null,					// 31
-			"TypeCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
-			"sub_28090",				&_scriptHandler::o_execute_Unit_Null,					// 33
+			"randomRotate",				&_scriptHandler::o_execute_Unit_Null,					// 31
+			"UnitOfTypeCountGet",		&_scriptHandler::o_execute_Unit_Null,					// 32
+			"BuildingFindMoveTo",		&_scriptHandler::o_execute_Unit_Null,					// 33
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 34
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 35
-			"GetNearObjectTypeIndex",   &_scriptHandler::o_execute_Unit_Null,					// 36
+			"FindNearUnitGetScriptObject",   &_scriptHandler::o_execute_Unit_Null,					// 36
 			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,					// 37
-			"GetField64",				&_scriptHandler::o_execute_Unit_Null,					// 38
+			"GetBaseCurrentAngle",		&_scriptHandler::o_execute_Unit_Null,					// 38
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
-			"GetAttackObjectIndexType",	&_scriptHandler::o_execute_Unit_Null,					// 3A
+			"SetTargetScriptObject",	&_scriptHandler::o_execute_Unit_Null,					// 3A
 			"ObjectIsValid?",			&_scriptHandler::o_execute_Unit_Null,					// 3B
 			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,					// 3C
-			"sub_27053",				&_scriptHandler::o_execute_Unit_Null,					// 3D
-			"ObjectDistanceCalc",		&_scriptHandler::o_execute_Unit_Null,					// 3E
+			"TurnToMapDest",			&_scriptHandler::o_execute_Unit_Null,					// 3D
+			"ScriptObjectDistanceCalc",	&_scriptHandler::o_execute_Unit_Null,					// 3E
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 3F
 		};
 
 		_opcodesExecute = scriptOpcodesExecuteUnits;
 	}
 
-	// The 'Houses' Execute functions
+	// The 'Team' Execute functions
 	void _scriptHandler::opcodesHousesSetup() {
-		static const _Opcode scriptOpcodesExecuteHouses[0xF] = {
+		static const _Opcode scriptOpcodesExecuteTeams[0xF] = {
 			"Delay",					&_scriptHandler::o_execute_House_Null,		// 0 	
-			"HouseText",				&_scriptHandler::o_execute_House_Null,		// 1
-			"HouseLastUnitIndexGet",	&_scriptHandler::o_execute_House_Null,		// 2
-			"sub_24E93",				&_scriptHandler::o_execute_House_Null,		// 3
+			"Text?",					&_scriptHandler::o_execute_House_Null,		// 1
+			"unitsUsingThisTeam",		&_scriptHandler::o_execute_House_Null,		// 2
+			"FindUnitForTeam",			&_scriptHandler::o_execute_House_Null,		// 3
 			"sub_2503A",				&_scriptHandler::o_execute_House_Null,		// 4
 			"sub_251BA",				&_scriptHandler::o_execute_House_Null,		// 5
 			"sub_2533D",				&_scriptHandler::o_execute_House_Null,		// 6
-			"sub_253FF",				&_scriptHandler::o_execute_House_Null,		// 7
-			"sub_2563B",				&_scriptHandler::o_execute_House_Null,		// 8
-			"sub_25697",				&_scriptHandler::o_execute_House_Null,		// 9
-			"DelayAnd",					&_scriptHandler::o_execute_House_Null,		// A
+			"ActionStart",				&_scriptHandler::o_execute_House_Null,		// 7
+			"AiModeSet",				&_scriptHandler::o_execute_House_Null,		// 8
+			"ScriptClearPrepare",		&_scriptHandler::o_execute_House_Null,		// 9
+			"DelayRandom",				&_scriptHandler::o_execute_House_Null,		// A
 			"sub_1CFC4",				&_scriptHandler::o_execute_House_Null,		// B
-			"UnitCountGet",				&_scriptHandler::o_execute_House_Null,		// C
-			"WindtrapCountGet",			&_scriptHandler::o_execute_House_Null,		// D
+			"Field6Get",				&_scriptHandler::o_execute_House_Null,		// C
+			"scriptObjectTargetGet",	&_scriptHandler::o_execute_House_Null,		// D
 			"Null",						&_scriptHandler::o_execute_House_Null,		// E
 		};
 
-		_opcodesExecute = scriptOpcodesExecuteHouses;
+		_opcodesExecute = scriptOpcodesExecuteTeams;
 	}
 
 }

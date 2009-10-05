@@ -22,16 +22,16 @@
 
 #include "stdafx.h"
 
-const char *version = "1.1";
+const char *version = "1.2";
 
 // Object Names
-const char *nameHouses[0x06] = {
-	"Harkonnen",
-	"Atreides",
-	"Ordos",
-	"Fremen",
-	"Sardaukar",
-	"Mercenary"
+const char *nameTeams[0x06] = {
+	"Normal",
+	"Staging",
+	"Flee",
+	"Kamikaze",
+	"Guard",
+	"Unknown"
 };
 
 const char *nameStructures[0x13] = {
@@ -92,20 +92,20 @@ const char *nameUnitDetails[0x14] = {
 	"HoldingTypeIndex",     
 	"WeaponRange",           
 	"IndexGet",              
-	"Field64Get",            
-	"AttackObjectIndexTypeGet",                   
+	"anim1NewAngle",            
+	"TargetScriptObject",                   
 	"Return",
 	"TypeIndex",
 	"IndexGetAsObject",
 	"Field6BGet",                 
-	"loc_27562",          
+	"anim1AngleToMove",          
 	"IsMoving",                 
 	"WeaponCoolDownTimer",                 
-	"OptsFitW",               
+	"GetExplosionBits",               
 	"HouseIDGet",            
-	"loc_275C1",                 
-	"TurretGet?",     
-	"loc_2752F",                 
-	"CanTurretRotates",          
+	"CheckState200",                 
+	"anim2NewAngle",     
+	"anim2AngleToMove",                 
+	"DoesTurretRotate",          
 	"CheckIfHuman"              
 };
