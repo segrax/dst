@@ -157,7 +157,7 @@ namespace script {
 			"actionStart",				&_scriptHandler::o_execute_Unit_Null,					// 1
 			"Text",   					&_scriptHandler::o_execute_Unit_Null,					// 2
 			"ObjectDistance",			&_scriptHandler::o_execute_Unit_Null,					// 3
-			"sub_279AB",				&_scriptHandler::o_execute_Unit_Null,					// 4
+			"mapCellAnimStart",			&_scriptHandler::o_execute_Unit_Null,					// 4
 			"sub_27186",				&_scriptHandler::o_execute_Unit_Null,					// 5
 			"GetAngleBetween",			&_scriptHandler::o_execute_Unit_Null,					// 6
 			"BaseTurnToAngle",			&_scriptHandler::o_execute_Unit_Null,					// 7
@@ -197,7 +197,7 @@ namespace script {
 			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 2B
-			"GetHoldingScriptObject",	&_scriptHandler::o_execute_Unit_Null,					// 2C
+			"scriptObjectHoldingTypeGet",	&_scriptHandler::o_execute_Unit_Null,					// 2C
 			"ScriptObjectTypeGet",		&_scriptHandler::o_execute_Unit_Null,					// 2D
 			"ScriptObjectIndexGet ",	&_scriptHandler::o_execute_Unit_Null,					// 2E
 			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
@@ -211,7 +211,7 @@ namespace script {
 			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,					// 37
 			"GetBaseCurrentAngle",		&_scriptHandler::o_execute_Unit_Null,					// 38
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
-			"SetTargetScriptObject",	&_scriptHandler::o_execute_Unit_Null,					// 3A
+			"scriptObjectTargetSet",	&_scriptHandler::o_execute_Unit_Null,					// 3A
 			"ObjectIsValid?",			&_scriptHandler::o_execute_Unit_Null,					// 3B
 			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,					// 3C
 			"TurnToMapDest",			&_scriptHandler::o_execute_Unit_Null,					// 3D
