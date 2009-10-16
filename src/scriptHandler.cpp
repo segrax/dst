@@ -167,7 +167,7 @@ namespace script {
 			"Flash",					&_scriptHandler::o_execute_Unit_Null,					// B
 			"PathFind",					&_scriptHandler::o_execute_Unit_Null,					// C
 			"HouseCompare",				&_scriptHandler::o_execute_Unit_Null,					// D
-			"sub_26A69",				&_scriptHandler::o_execute_Unit_Null,					// E
+			"mapCellSingleAnimStart",	&_scriptHandler::o_execute_Unit_Null,					// E
 			"Destroy",					&_scriptHandler::o_execute_Unit_Null,					// F
 			"Delay",					&_scriptHandler::o_execute_Unit_Null,					// 10
 			"sub_1D2EE",				&_scriptHandler::o_execute_Unit_Null,					// 11
