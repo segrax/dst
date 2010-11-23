@@ -73,14 +73,14 @@ namespace script {
 			"SetReturn",		&_scriptHandler::o_setreturn,			// 1
 			"PushOp",			&_scriptHandler::o_pushOp,				// 2
 			"PushWord",			&_scriptHandler::o_pushWord,			// 3
-			"Push",				&_scriptHandler::o_push,				// 4
-			"PushReg",			&_scriptHandler::o_pushreg,				// 5
-			"PushFrameMinArg",	&_scriptHandler::o_pushframeMinArg,		// 6
-			"PushFramePluArg",	&_scriptHandler::o_pushframePluArg,		// 7
+			"PushByte",			&_scriptHandler::o_push,				// 4
+			"PushVar",			&_scriptHandler::o_pushreg,				// 5
+			"PushLocalVar",	&_scriptHandler::o_pushframeMinArg,			// 6
+			"PushParameter",	&_scriptHandler::o_pushframePluArg,		// 7
 			"Pop",				&_scriptHandler::o_popret,				// 8
 			"PopReg",			&_scriptHandler::o_popreg,				// 9
-			"PopFrameMinArg",	&_scriptHandler::o_popframeMinArg,		// A
-			"PopFramePluArg",	&_scriptHandler::o_popframePluArg,		// B
+			"PopLocalVar",	&_scriptHandler::o_popframeMinArg,			// A
+			"PopParameter",	&_scriptHandler::o_popframePluArg,			// B
 			"AddSP",			&_scriptHandler::o_spadd,				// C
 			"SubSP",			&_scriptHandler::o_spsub,				// D
 			"Execute",			&_scriptHandler::o_execute,				// E
@@ -92,14 +92,14 @@ namespace script {
 		
 		// The 'Evaluate' opcode functions
 		static const _Opcode scriptOpcodesEvaluate[0x12] = {
-			"IfEither",					&_scriptHandler::o_evaluate_IfEither,				// 0
-			"IfEither1",				&_scriptHandler::o_evaluate_IfEither,				// 1
+			"IfAnd",					&_scriptHandler::o_evaluate_IfEither,				// 0
+			"IfOr",						&_scriptHandler::o_evaluate_IfEither,				// 1
 			"Equal",					&_scriptHandler::o_evaluate_Equal,					// 2
 			"NotEqual",					&_scriptHandler::o_evaluate_NotEqual,				// 3
-			"CompareGreaterEqual",		&_scriptHandler::o_evaluate_CompareGreaterEqual,	// 4
-			"CompareGreater",			&_scriptHandler::o_evaluate_CompareGreater,			// 5
-			"CompareLessEqual",			&_scriptHandler::o_evaluate_CompareLessEqual,		// 6
-			"CompareLess",				&_scriptHandler::o_evaluate_CompareLess,			// 7
+			"CompareLess",		&_scriptHandler::o_evaluate_CompareGreaterEqual,	// 4
+			"CompareLessEqual",			&_scriptHandler::o_evaluate_CompareGreater,			// 5
+			"CompareRight",			&_scriptHandler::o_evaluate_CompareLessEqual,		// 6
+			"CompareRightEqual",				&_scriptHandler::o_evaluate_CompareLess,			// 7
 			"Add",						&_scriptHandler::o_evaluate_Add,					// 8
 			"Subtract",					&_scriptHandler::o_evaluate_Subtract,				// 9
 			"Multiply",					&_scriptHandler::o_evaluate_Multiply,				// A
@@ -123,13 +123,13 @@ namespace script {
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// 1
 			"VerifyAttached",			&_scriptHandler::o_execute_Building_Null,					// 2	
 			"Attach",					&_scriptHandler::o_execute_Building_Null,					// 3
-			"SetFrame",					&_scriptHandler::o_execute_Building_Null,					// 4
-			"Text",						&_scriptHandler::o_execute_Building_Null,					// 5
+			"SetAnimation",				&_scriptHandler::o_execute_Building_Null,					// 4
+			"DisplayText",				&_scriptHandler::o_execute_Building_Null,					// 5
 			"Disattach",				&_scriptHandler::o_execute_Building_Null,					// 6
 			"Deploy",					&_scriptHandler::o_execute_Building_Null,					// 7
-			"GetTarget",				&_scriptHandler::o_execute_Building_Null,					// 8
-			"SetAngle",					&_scriptHandler::o_execute_Building_Null,					// 9
-			"GetAngle",					&_scriptHandler::o_execute_Building_Null,					// A
+			"FindTargetUnit",			&_scriptHandler::o_execute_Building_Null,					// 8
+			"RotateTurret",				&_scriptHandler::o_execute_Building_Null,					// 9
+			"GetDirection",				&_scriptHandler::o_execute_Building_Null,					// A
 			"ShootTarget",				&_scriptHandler::o_execute_Building_Null,					// B
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// C
 			"GetFrame",					&_scriptHandler::o_execute_Building_Null,					// D
@@ -154,16 +154,16 @@ namespace script {
 	void _scriptHandler::opcodesUnitsSetup() {
 		static const _Opcode scriptOpcodesExecuteUnits[0x64] = {
 			"GetDetail",				&_scriptHandler::o_execute_Unit_GetDetail,				// 0 	
-			"actionStart",				&_scriptHandler::o_execute_Unit_Null,					// 1
-			"Text",   					&_scriptHandler::o_execute_Unit_Null,					// 2
-			"ObjectDistance",			&_scriptHandler::o_execute_Unit_Null,					// 3
+			"SetAction",				&_scriptHandler::o_execute_Unit_Null,					// 1
+			"DisplayText",   			&_scriptHandler::o_execute_Unit_Null,					// 2
+			"GetDistance",				&_scriptHandler::o_execute_Unit_Null,					// 3
 			"mapCellAnimStart",			&_scriptHandler::o_execute_Unit_Null,					// 4
 			"sub_27186",				&_scriptHandler::o_execute_Unit_Null,					// 5
 			"GetAngleBetween",			&_scriptHandler::o_execute_Unit_Null,					// 6
 			"BaseTurnToAngle",			&_scriptHandler::o_execute_Unit_Null,					// 7
-			"Attack",					&_scriptHandler::o_execute_Unit_Null,					// 8
+			"ShootTarget",				&_scriptHandler::o_execute_Unit_Null,					// 8
 			"MCVDeploy",				&_scriptHandler::o_execute_Unit_Null,					// 9
-			"SidebarCmd4",				&_scriptHandler::o_execute_Unit_Null,					// A
+			"SetActionDefault",			&_scriptHandler::o_execute_Unit_Null,					// A
 			"Flash",					&_scriptHandler::o_execute_Unit_Null,					// B
 			"PathFind",					&_scriptHandler::o_execute_Unit_Null,					// C
 			"HouseCompare",				&_scriptHandler::o_execute_Unit_Null,					// D
@@ -181,30 +181,30 @@ namespace script {
 			"SetMoveDestTurnTo",		&_scriptHandler::o_execute_Unit_Null,					// 19
 			"StopMove",					&_scriptHandler::o_execute_Unit_Null,					// 1A
 			"SpeedUpdate",				&_scriptHandler::o_execute_Unit_Null,					// 1B
-			"sub_25F3F",				&_scriptHandler::o_execute_Unit_Null,					// 1C
-			"DamageGet",				&_scriptHandler::o_execute_Unit_Null,					// 1D
+			"FindBestTarget",			&_scriptHandler::o_execute_Unit_Null,					// 1C
+			"GetTargetPriority",		&_scriptHandler::o_execute_Unit_Null,					// 1D
 			"Dock?",					&_scriptHandler::o_execute_Unit_Null,					// 1E
-			"TestState100",				&_scriptHandler::o_execute_Unit_Null,					// 1F
-			"CheckHarvestReturn",		&_scriptHandler::o_execute_Unit_Null,					// 20
+			"IsInTransport",			&_scriptHandler::o_execute_Unit_Null,					// 1F
+			"GetAmount",				&_scriptHandler::o_execute_Unit_Null,					// 20
 			"CreateSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
 			"DeliverToBuilding",		&_scriptHandler::o_execute_Unit_Null,					// 22
 			"PlaceInUnit",				&_scriptHandler::o_execute_Unit_Null,					// 23
 			"ScriptObjectHoldingSetToReg4",		&_scriptHandler::o_execute_Unit_Null,					// 24
-			"BuildingFreeFind",			&_scriptHandler::o_execute_Unit_Null,					// 25
+			"FindStructure",			&_scriptHandler::o_execute_Unit_Null,					// 25
 			"PlaySFX",					&_scriptHandler::o_execute_Unit_Null,					// 26
 			"DestroyedMessage",			&_scriptHandler::o_execute_Unit_Null,					// 27
 			"MapReveal",				&_scriptHandler::o_execute_Unit_Null,					// 28
 			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 2B
-			"scriptObjectHoldingTypeGet",	&_scriptHandler::o_execute_Unit_Null,					// 2C
-			"ScriptObjectTypeGet",		&_scriptHandler::o_execute_Unit_Null,					// 2D
-			"ScriptObjectIndexGet ",	&_scriptHandler::o_execute_Unit_Null,					// 2E
+			"GetLinkedUnitType",		&_scriptHandler::o_execute_Unit_Null,					// 2C
+			"GetIndexType",				&_scriptHandler::o_execute_Unit_Null,					// 2D
+			"GetIndex",					&_scriptHandler::o_execute_Unit_Null,					// 2E
 			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
 			"GetMapPieceForUnit",		&_scriptHandler::o_execute_Unit_Null,					// 30
 			"randomRotate",				&_scriptHandler::o_execute_Unit_Null,					// 31
-			"UnitOfTypeCountGet",		&_scriptHandler::o_execute_Unit_Null,					// 32
-			"BuildingFindMoveTo",		&_scriptHandler::o_execute_Unit_Null,					// 33
+			"GetUnitCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
+			"StructureMoveToClosest",	&_scriptHandler::o_execute_Unit_Null,					// 33
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 34
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 35
 			"FindNearUnitGetScriptObject",   &_scriptHandler::o_execute_Unit_Null,					// 36
@@ -213,7 +213,7 @@ namespace script {
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
 			"scriptObjectTargetSet",	&_scriptHandler::o_execute_Unit_Null,					// 3A
 			"ObjectIsValid?",			&_scriptHandler::o_execute_Unit_Null,					// 3B
-			"DelayAnd?",				&_scriptHandler::o_execute_Unit_Null,					// 3C
+			"DelayRandom",				&_scriptHandler::o_execute_Unit_Null,					// 3C
 			"TurnToMapDest",			&_scriptHandler::o_execute_Unit_Null,					// 3D
 			"ScriptObjectDistanceCalc",	&_scriptHandler::o_execute_Unit_Null,					// 3E
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 3F
@@ -226,19 +226,19 @@ namespace script {
 	void _scriptHandler::opcodesHousesSetup() {
 		static const _Opcode scriptOpcodesExecuteTeams[0xF] = {
 			"Delay",					&_scriptHandler::o_execute_House_Null,		// 0 	
-			"Text?",					&_scriptHandler::o_execute_House_Null,		// 1
-			"unitsUsingThisTeam",		&_scriptHandler::o_execute_House_Null,		// 2
-			"FindUnitForTeam",			&_scriptHandler::o_execute_House_Null,		// 3
-			"sub_2503A",				&_scriptHandler::o_execute_House_Null,		// 4
+			"DisplayText",				&_scriptHandler::o_execute_House_Null,		// 1
+			"GetMembers",				&_scriptHandler::o_execute_House_Null,		// 2
+			"AddCloserUnit",			&_scriptHandler::o_execute_House_Null,		// 3
+			"GetAverageDistance",		&_scriptHandler::o_execute_House_Null,		// 4
 			"sub_251BA",				&_scriptHandler::o_execute_House_Null,		// 5
-			"sub_2533D",				&_scriptHandler::o_execute_House_Null,		// 6
+			"FindBestTarget",			&_scriptHandler::o_execute_House_Null,		// 6
 			"ActionStart",				&_scriptHandler::o_execute_House_Null,		// 7
-			"AiModeSet",				&_scriptHandler::o_execute_House_Null,		// 8
-			"ScriptClearPrepare",		&_scriptHandler::o_execute_House_Null,		// 9
+			"Load",						&_scriptHandler::o_execute_House_Null,		// 8
+			"Load2",					&_scriptHandler::o_execute_House_Null,		// 9
 			"DelayRandom",				&_scriptHandler::o_execute_House_Null,		// A
 			"sub_1CFC4",				&_scriptHandler::o_execute_House_Null,		// B
-			"Field6Get",				&_scriptHandler::o_execute_House_Null,		// C
-			"scriptObjectTargetGet",	&_scriptHandler::o_execute_House_Null,		// D
+			"GetMinimum",				&_scriptHandler::o_execute_House_Null,		// C
+			"GetTarget",				&_scriptHandler::o_execute_House_Null,		// D
 			"Null",						&_scriptHandler::o_execute_House_Null,		// E
 		};
 
