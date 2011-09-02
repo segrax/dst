@@ -121,20 +121,20 @@ namespace script {
 		static const _Opcode scriptOpcodesExecuteBuildings[0x19] = {
 			"Delay",					&_scriptHandler::o_execute_Building_Null,					// 0
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// 1
-			"VerifyAttached",			&_scriptHandler::o_execute_Building_Null,					// 2	
-			"Attach",					&_scriptHandler::o_execute_Building_Null,					// 3
-			"SetAnimation",				&_scriptHandler::o_execute_Building_Null,					// 4
+			"Unknown0A81",				&_scriptHandler::o_execute_Building_Null,					// 2	
+			"FindUnitByType",			&_scriptHandler::o_execute_Building_Null,					// 3
+			"SetState",					&_scriptHandler::o_execute_Building_Null,					// 4
 			"DisplayText",				&_scriptHandler::o_execute_Building_Null,					// 5
-			"Disattach",				&_scriptHandler::o_execute_Building_Null,					// 6
-			"Deploy",					&_scriptHandler::o_execute_Building_Null,					// 7
+			"Unknown11B9",				&_scriptHandler::o_execute_Building_Null,					// 6
+			"Unknown0C5A",				&_scriptHandler::o_execute_Building_Null,					// 7
 			"FindTargetUnit",			&_scriptHandler::o_execute_Building_Null,					// 8
 			"RotateTurret",				&_scriptHandler::o_execute_Building_Null,					// 9
 			"GetDirection",				&_scriptHandler::o_execute_Building_Null,					// A
-			"ShootTarget",				&_scriptHandler::o_execute_Building_Null,					// B
+			"Fire",						&_scriptHandler::o_execute_Building_Null,					// B
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// C
-			"GetFrame",					&_scriptHandler::o_execute_Building_Null,					// D
-			"PlaySfx",					&_scriptHandler::o_execute_Building_Null,					// E
-			"Reveal",					&_scriptHandler::o_execute_Building_Null,					// F
+			"GetState",					&_scriptHandler::o_execute_Building_Null,					// D
+			"VoicePlay",				&_scriptHandler::o_execute_Building_Null,					// E
+			"RemoveFogAroundTile",		&_scriptHandler::o_execute_Building_Null,					// F
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// 10
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// 11
 			"Null",						&_scriptHandler::o_execute_Building_Null,					// 12
@@ -153,69 +153,69 @@ namespace script {
 	// The 'Units' Execute functions
 	void _scriptHandler::opcodesUnitsSetup() {
 		static const _Opcode scriptOpcodesExecuteUnits[0x64] = {
-			"GetDetail",				&_scriptHandler::o_execute_Unit_GetDetail,				// 0 	
+			"GetInfo",				&_scriptHandler::o_execute_Unit_GetInfo,				// 0 	
 			"SetAction",				&_scriptHandler::o_execute_Unit_Null,					// 1
 			"DisplayText",   			&_scriptHandler::o_execute_Unit_Null,					// 2
-			"GetDistance",				&_scriptHandler::o_execute_Unit_Null,					// 3
-			"mapCellAnimStart",			&_scriptHandler::o_execute_Unit_Null,					// 4
-			"sub_27186",				&_scriptHandler::o_execute_Unit_Null,					// 5
-			"GetAngleBetween",			&_scriptHandler::o_execute_Unit_Null,					// 6
-			"BaseTurnToAngle",			&_scriptHandler::o_execute_Unit_Null,					// 7
-			"ShootTarget",				&_scriptHandler::o_execute_Unit_Null,					// 8
+			"GetDistanceToTile",		&_scriptHandler::o_execute_Unit_Null,					// 3
+			"StartAnimation",			&_scriptHandler::o_execute_Unit_Null,					// 4
+			"SetDestination",			&_scriptHandler::o_execute_Unit_Null,					// 5
+			"GetOrientation",			&_scriptHandler::o_execute_Unit_Null,					// 6
+			"SetOrientation",			&_scriptHandler::o_execute_Unit_Null,					// 7
+			"Fire",						&_scriptHandler::o_execute_Unit_Null,					// 8
 			"MCVDeploy",				&_scriptHandler::o_execute_Unit_Null,					// 9
 			"SetActionDefault",			&_scriptHandler::o_execute_Unit_Null,					// A
-			"Flash",					&_scriptHandler::o_execute_Unit_Null,					// B
-			"PathFind",					&_scriptHandler::o_execute_Unit_Null,					// C
-			"HouseCompare",				&_scriptHandler::o_execute_Unit_Null,					// D
-			"mapCellSingleAnimStart",	&_scriptHandler::o_execute_Unit_Null,					// E
-			"Destroy",					&_scriptHandler::o_execute_Unit_Null,					// F
+			"Blink",					&_scriptHandler::o_execute_Unit_Null,					// B
+			"CalculateRoute",			&_scriptHandler::o_execute_Unit_Null,					// C
+			"IsEnemy",					&_scriptHandler::o_execute_Unit_Null,					// D
+			"ExplosionSingle",			&_scriptHandler::o_execute_Unit_Null,					// E
+			"Die",						&_scriptHandler::o_execute_Unit_Null,					// F
 			"Delay",					&_scriptHandler::o_execute_Unit_Null,					// 10
-			"sub_1D2EE",				&_scriptHandler::o_execute_Unit_Null,					// 11
-			"sub_26AB4",				&_scriptHandler::o_execute_Unit_Null,					// 12
-			"sub_26745",				&_scriptHandler::o_execute_Unit_Null,					// 13
-			"sub_25F69",				&_scriptHandler::o_execute_Unit_Null,					// 14
+			"IsFriendly",				&_scriptHandler::o_execute_Unit_Null,					// 11
+			"ExplosionMultiple",		&_scriptHandler::o_execute_Unit_Null,					// 12
+			"SetSprite",				&_scriptHandler::o_execute_Unit_Null,					// 13
+			"TransportDeliver",			&_scriptHandler::o_execute_Unit_Null,					// 14
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 15
-			"sub_2677F",				&_scriptHandler::o_execute_Unit_Null,					// 16
-			"RandomNumber",				&_scriptHandler::o_execute_Unit_Null,					// 17
-			"BuildingIsFree",			&_scriptHandler::o_execute_Unit_Null,					// 18
-			"SetMoveDestTurnTo",		&_scriptHandler::o_execute_Unit_Null,					// 19
-			"StopMove",					&_scriptHandler::o_execute_Unit_Null,					// 1A
-			"SpeedUpdate",				&_scriptHandler::o_execute_Unit_Null,					// 1B
+			"MoveToTarget",				&_scriptHandler::o_execute_Unit_Null,					// 16
+			"RandomRange",				&_scriptHandler::o_execute_Unit_Null,					// 17
+			"FindIdle",					&_scriptHandler::o_execute_Unit_Null,					// 18
+			"SetDestinationDirect",		&_scriptHandler::o_execute_Unit_Null,					// 19
+			"Stop",						&_scriptHandler::o_execute_Unit_Null,					// 1A
+			"SetSpeed",					&_scriptHandler::o_execute_Unit_Null,					// 1B
 			"FindBestTarget",			&_scriptHandler::o_execute_Unit_Null,					// 1C
 			"GetTargetPriority",		&_scriptHandler::o_execute_Unit_Null,					// 1D
-			"Dock?",					&_scriptHandler::o_execute_Unit_Null,					// 1E
+			"MoveToStructure",			&_scriptHandler::o_execute_Unit_Null,					// 1E
 			"IsInTransport",			&_scriptHandler::o_execute_Unit_Null,					// 1F
 			"GetAmount",				&_scriptHandler::o_execute_Unit_Null,					// 20
-			"CreateSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
-			"DeliverToBuilding",		&_scriptHandler::o_execute_Unit_Null,					// 22
-			"PlaceInUnit",				&_scriptHandler::o_execute_Unit_Null,					// 23
-			"ScriptObjectHoldingSetToReg4",		&_scriptHandler::o_execute_Unit_Null,					// 24
+			"RandomSoldier",			&_scriptHandler::o_execute_Unit_Null,					// 21
+			"Pickup",					&_scriptHandler::o_execute_Unit_Null,					// 22
+			"CallUnitByType",			&_scriptHandler::o_execute_Unit_Null,					// 23
+			"Unknown2552",				&_scriptHandler::o_execute_Unit_Null,					// 24
 			"FindStructure",			&_scriptHandler::o_execute_Unit_Null,					// 25
-			"PlaySFX",					&_scriptHandler::o_execute_Unit_Null,					// 26
-			"DestroyedMessage",			&_scriptHandler::o_execute_Unit_Null,					// 27
-			"MapReveal",				&_scriptHandler::o_execute_Unit_Null,					// 28
-			"MapGetTile",				&_scriptHandler::o_execute_Unit_Null,					// 29
+			"VoicePlay",				&_scriptHandler::o_execute_Unit_Null,					// 26
+			"DisplayDestroyedText",		&_scriptHandler::o_execute_Unit_Null,					// 27
+			"RemoveFog",				&_scriptHandler::o_execute_Unit_Null,					// 28
+			"SearchSpice",				&_scriptHandler::o_execute_Unit_Null,					// 29
 			"Harvest",					&_scriptHandler::o_execute_Unit_Null,					// 2A
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 2B
 			"GetLinkedUnitType",		&_scriptHandler::o_execute_Unit_Null,					// 2C
 			"GetIndexType",				&_scriptHandler::o_execute_Unit_Null,					// 2D
-			"GetIndex",					&_scriptHandler::o_execute_Unit_Null,					// 2E
-			"sub_27E8B",				&_scriptHandler::o_execute_Unit_Null,					// 2F
-			"GetMapPieceForUnit",		&_scriptHandler::o_execute_Unit_Null,					// 30
-			"randomRotate",				&_scriptHandler::o_execute_Unit_Null,					// 31
-			"GetUnitCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
-			"StructureMoveToClosest",	&_scriptHandler::o_execute_Unit_Null,					// 33
+			"DecodeIndex",				&_scriptHandler::o_execute_Unit_Null,					// 2E
+			"IsValidDestination",		&_scriptHandler::o_execute_Unit_Null,					// 2F
+			"GetRandomTile",			&_scriptHandler::o_execute_Unit_Null,					// 30
+			"IdleAction",				&_scriptHandler::o_execute_Unit_Null,					// 31
+			"UnitCount",				&_scriptHandler::o_execute_Unit_Null,					// 32
+			"GoToClosestStructure",		&_scriptHandler::o_execute_Unit_Null,					// 33
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 34
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 35
-			"FindNearUnitGetScriptObject",   &_scriptHandler::o_execute_Unit_Null,					// 36
-			"sub_282BC",				&_scriptHandler::o_execute_Unit_Null,					// 37
-			"GetBaseCurrentAngle",		&_scriptHandler::o_execute_Unit_Null,					// 38
+			"GetBestTarget",			&_scriptHandler::o_execute_Unit_Null,					// 36
+			"Unknown2BD5",				&_scriptHandler::o_execute_Unit_Null,					// 37
+			"GetOrientation",			&_scriptHandler::o_execute_Unit_Null,					// 38
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
-			"scriptObjectTargetSet",	&_scriptHandler::o_execute_Unit_Null,					// 3A
-			"ObjectIsValid?",			&_scriptHandler::o_execute_Unit_Null,					// 3B
+			"SetTarget",				&_scriptHandler::o_execute_Unit_Null,					// 3A
+			"Unknown0288",				&_scriptHandler::o_execute_Unit_Null,					// 3B
 			"DelayRandom",				&_scriptHandler::o_execute_Unit_Null,					// 3C
-			"TurnToMapDest",			&_scriptHandler::o_execute_Unit_Null,					// 3D
-			"ScriptObjectDistanceCalc",	&_scriptHandler::o_execute_Unit_Null,					// 3E
+			"Rotate",					&_scriptHandler::o_execute_Unit_Null,					// 3D
+			"GetDistanceToObject",		&_scriptHandler::o_execute_Unit_Null,					// 3E
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 3F
 		};
 
@@ -230,14 +230,14 @@ namespace script {
 			"GetMembers",				&_scriptHandler::o_execute_House_Null,		// 2
 			"AddCloserUnit",			&_scriptHandler::o_execute_House_Null,		// 3
 			"GetAverageDistance",		&_scriptHandler::o_execute_House_Null,		// 4
-			"sub_251BA",				&_scriptHandler::o_execute_House_Null,		// 5
+			"Unknown0543",				&_scriptHandler::o_execute_House_Null,		// 5
 			"FindBestTarget",			&_scriptHandler::o_execute_House_Null,		// 6
-			"ActionStart",				&_scriptHandler::o_execute_House_Null,		// 7
+			"Unknown0788",				&_scriptHandler::o_execute_House_Null,		// 7
 			"Load",						&_scriptHandler::o_execute_House_Null,		// 8
 			"Load2",					&_scriptHandler::o_execute_House_Null,		// 9
 			"DelayRandom",				&_scriptHandler::o_execute_House_Null,		// A
-			"sub_1CFC4",				&_scriptHandler::o_execute_House_Null,		// B
-			"GetMinimum",				&_scriptHandler::o_execute_House_Null,		// C
+			"DisplayModalMessage",		&_scriptHandler::o_execute_House_Null,		// B
+			"GetVariable6",				&_scriptHandler::o_execute_House_Null,		// C
 			"GetTarget",				&_scriptHandler::o_execute_House_Null,		// D
 			"Null",						&_scriptHandler::o_execute_House_Null,		// E
 		};

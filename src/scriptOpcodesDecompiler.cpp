@@ -294,7 +294,7 @@ namespace script {
 
 	}
 
-	void	_scriptHandlerDecompiler::o_execute_Unit_GetDetail(  ) {
+	void	_scriptHandlerDecompiler::o_execute_Unit_GetInfo(  ) {
 		if( !_modePreProcess )
 			_destinationFile << "(" << nameUnitDetails[ _scriptLastPush ] << ")";
 	}

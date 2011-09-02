@@ -22,7 +22,7 @@
 
 #include "stdafx.h"
 
-const char *version = "1.2";
+const char *version = "1.3";
 
 // Object Names
 const char *nameTeams[0x06] = {
@@ -88,24 +88,24 @@ const char *nameUnits[0x1B] = {
 
 // Unit GetDetail Function DetailNames
 const char *nameUnitDetails[0x14] = {
-	"HitPointRepairCalc?",   
-	"scriptObjectHolding",     
-	"WeaponRange",           
-	"IndexGet",              
-	"anim1NewAngle",            
-	"scriptObjectTarget",                   
+	"HitPoints",   
+	"TargetMove",     
+	"FireDistance",           
+	"Index",              
+	"Orientation",            
+	"TargetAttack",                   
 	"Return",
-	"TypeIndex",
-	"IndexGetAsObject",
-	"Field6BGet",                 
-	"anim1AngleToMove",          
+	"Type",
+	"IndexEncoded",
+	"MovingSpeed",                 
+	"AngleToMove",          
 	"IsMoving",                 
-	"WeaponCoolDownTimer",                 
-	"GetExplosionBits",               
-	"HouseIDGet",            
-	"CheckState200",                 
-	"anim2NewAngle",     
-	"anim2AngleToMove",                 
-	"DoesTurretRotate",          
-	"CheckIfHuman"              
+	"FireDelay",                 
+	"ExplodeOnDeath",               
+	"HouseID",            
+	"ByScenario",                 
+	"Orientation_Current",     
+	"Orientation_TargetToCurrent",                 
+	"TurretRotates",          
+	"isHuman"              
 };

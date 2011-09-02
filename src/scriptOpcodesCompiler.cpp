@@ -229,7 +229,7 @@ namespace script {
 
 	}
 
-	void	_scriptHandlerCompiler::o_execute_Unit_GetDetail(  ) {
+	void	_scriptHandlerCompiler::o_execute_Unit_GetInfo(  ) {
 		static string	detailName;
 		*_sourceFile >> detailName;
 	}

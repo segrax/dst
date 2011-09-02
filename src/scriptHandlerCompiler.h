@@ -92,7 +92,7 @@ namespace script {
 
 		}
 
-		void o_execute_Unit_GetDetail(  );
+		void o_execute_Unit_GetInfo(  );
 	};
 
 }

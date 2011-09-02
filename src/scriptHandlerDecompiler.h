@@ -94,7 +94,7 @@ namespace script {
 
 		void			 o_execute_Building_Null(  );
 		void			 o_execute_Unit_Null(  );
-		void			 o_execute_Unit_GetDetail(  );
+		void			 o_execute_Unit_GetInfo(  );
 		void			 o_execute_House_Null(  );
 	};
 

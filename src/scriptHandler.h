@@ -183,7 +183,7 @@ namespace script {
 
 			// Units
 			virtual void	 o_execute_Unit_Null(  )				= 0;
-			virtual void	 o_execute_Unit_GetDetail(  )			= 0;
+			virtual void	 o_execute_Unit_GetInfo(  )			= 0;
 
 			// Houses
 			virtual void	 o_execute_House_Null(  )				= 0;
