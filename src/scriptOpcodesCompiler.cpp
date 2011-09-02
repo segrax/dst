@@ -30,8 +30,12 @@ namespace script {
 		int labelPos = scriptLabelGet( _currentLine );
 		int bb = 0;
 
-		if(!_modePreProcess && labelPos == -1)
+		if(!_modePreProcess && labelPos == -1) {
+			// exception
 			*( (byte*) bb) = 01;
+			// Oh oh, the goto label wasnt found...
+
+		}
 
 		*(_scriptPtr) |= 0x80;
 		*(_scriptPtr) |= swapWord(labelPos);
@@ -50,7 +54,7 @@ namespace script {
 
 	void	 _scriptHandlerCompiler::o_pushWord(   ) {
 		*(_scriptPtr) |= 0x20;
-		*(_scriptPtr+1) |= swapWord(atoi(_currentLine.c_str()));
+		*(_scriptPtr+1) = swapWord(atoi(_currentLine.c_str()));
 		_scriptPtr++;
 		_scriptPos++;
 	}

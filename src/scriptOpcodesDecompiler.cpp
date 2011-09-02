@@ -79,7 +79,10 @@ namespace script {
 	}
 
 	void	_scriptHandlerDecompiler::o_pushWord() {
-		o_push();
+		_stackCount--;
+		_stackCount--;
+		_scriptLastPush = _scriptDataNext;
+		dataPrint( _scriptDataNext );
 	}
 
 	void	_scriptHandlerDecompiler::o_pushreg(   ) {
