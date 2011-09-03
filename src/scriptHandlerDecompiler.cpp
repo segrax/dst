@@ -228,6 +228,7 @@ namespace script {
 			if( !_modePreProcess ) {
 				stringstream opcodeData;
 
+				// Display the current script line position, and the opcode
 				//opcodeData << lineScriptPos << ": ";
 				//opcodeData << setw(2) << hex << (int) _opcodeCurrent << ": " ;
 
@@ -237,8 +238,10 @@ namespace script {
 			// Excute opcode
 			(this->*_opcodes[ _opcodeCurrent ].function)( );
 
+			// Display the current stack pointer
 			//_destinationFile  << setw(20) << " ";
 			//_destinationFile  << hex << uppercase << "S: 0x" << _stackCount << endl;
+
 			if( !_modePreProcess )
 				_destinationFile << endl;
 
