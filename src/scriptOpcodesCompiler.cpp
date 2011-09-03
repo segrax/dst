@@ -43,29 +43,31 @@ namespace script {
 	}
 
 	void	_scriptHandlerCompiler::o_setreturn(   ) {
-		//*(_scriptPtr) |= 0x40;
+		size_t value = atoi(_currentLine.c_str());
+
+		*(_scriptPtr) |= value;
 
 	}
 
 	void	_scriptHandlerCompiler::o_pushOp(   ) {
 		*(_scriptPtr) |= 0x40;
-		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()));
+		*(_scriptPtr) |= swapWord(atoi(_currentLine.c_str()) & 0xFF);
 	}
 
 	void	 _scriptHandlerCompiler::o_pushWord(   ) {
-		size_t value = atoi(_currentLine.c_str());
+		word value = (word) atoi(_currentLine.c_str());
 
-		if( value > 0xFF ) {
+		//if( value > 0xFF ) {
 			*(_scriptPtr) |= 0x20;
 			*(_scriptPtr+1) = swapWord( value );
 			_scriptPtr++;
 			_scriptPos++;
 
-		} else {
+		//} else {
 
-			*(_scriptPtr) |= 0x40;
-			*(_scriptPtr) |= swapWord(value);
-		}
+		//	*(_scriptPtr) |= 0x40;
+		//	*(_scriptPtr) |= (swapWord(value & 0xFF));
+		//}
 		
 	}
 
@@ -152,7 +154,7 @@ namespace script {
 
 		line = labelPos;
 
-		//line |= 0x8000;
+		line |= 0x8000;
 
 		*(_scriptPtr+1) = swapWord(line);
 

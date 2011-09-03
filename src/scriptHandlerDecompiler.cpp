@@ -24,6 +24,8 @@
 #include "scriptHandler.h"
 #include "scriptHandlerDecompiler.h"
 
+#include <sstream>
+
 namespace script {
 
 	_scriptHandlerDecompiler::_scriptHandlerDecompiler( const char *fileName ) : _scriptHandler(fileName) {
@@ -207,7 +209,8 @@ namespace script {
 				// Opcode uses 13 bits
 				_opcodeCurrent = 0;
 				_scriptData &= 0x7FFF;
-			} else
+			} else {
+
 				// Opcode only requires 1 byte
 				if( _scriptData & 0x4000 ) {
 					_scriptData &= 0xFF;
@@ -218,11 +221,18 @@ namespace script {
 					_scriptPtr++;
 					_scriptPos++;
 				}
+			}
 			
 
 			// Print opcode
-			if( !_modePreProcess )
-				_destinationFile << setw(20) << left <<  _opcodes[ _opcodeCurrent ].description;
+			if( !_modePreProcess ) {
+				stringstream opcodeData;
+
+				//opcodeData << lineScriptPos << ": ";
+				//opcodeData << setw(2) << hex << (int) _opcodeCurrent << ": " ;
+
+				_destinationFile << opcodeData.str() << setw(20) << left << _opcodes[ _opcodeCurrent ].description;
+			}
 
 			// Excute opcode
 			(this->*_opcodes[ _opcodeCurrent ].function)( );

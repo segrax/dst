@@ -153,7 +153,7 @@ namespace script {
 	// The 'Units' Execute functions
 	void _scriptHandler::opcodesUnitsSetup() {
 		static const _Opcode scriptOpcodesExecuteUnits[0x64] = {
-			"GetInfo",				&_scriptHandler::o_execute_Unit_GetInfo,				// 0 	
+			"GetInfo",				&_scriptHandler::o_execute_Unit_GetInfo,					// 0 	
 			"SetAction",				&_scriptHandler::o_execute_Unit_Null,					// 1
 			"DisplayText",   			&_scriptHandler::o_execute_Unit_Null,					// 2
 			"GetDistanceToTile",		&_scriptHandler::o_execute_Unit_Null,					// 3
@@ -209,7 +209,7 @@ namespace script {
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 35
 			"GetBestTarget",			&_scriptHandler::o_execute_Unit_Null,					// 36
 			"Unknown2BD5",				&_scriptHandler::o_execute_Unit_Null,					// 37
-			"GetOrientation",			&_scriptHandler::o_execute_Unit_Null,					// 38
+			"General_GetOrientation",	&_scriptHandler::o_execute_Unit_Null,					// 38
 			"Null",						&_scriptHandler::o_execute_Unit_Null,					// 39
 			"SetTarget",				&_scriptHandler::o_execute_Unit_Null,					// 3A
 			"Unknown0288",				&_scriptHandler::o_execute_Unit_Null,					// 3B
