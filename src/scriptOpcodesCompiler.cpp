@@ -53,10 +53,20 @@ namespace script {
 	}
 
 	void	 _scriptHandlerCompiler::o_pushWord(   ) {
-		*(_scriptPtr) |= 0x20;
-		*(_scriptPtr+1) = swapWord(atoi(_currentLine.c_str()));
-		_scriptPtr++;
-		_scriptPos++;
+		size_t value = atoi(_currentLine.c_str());
+
+		if( value > 0xFF ) {
+			*(_scriptPtr) |= 0x20;
+			*(_scriptPtr+1) = swapWord( value );
+			_scriptPtr++;
+			_scriptPos++;
+
+		} else {
+
+			*(_scriptPtr) |= 0x40;
+			*(_scriptPtr) |= swapWord(value);
+		}
+		
 	}
 
 	void	_scriptHandlerCompiler::o_push(   ) {
@@ -142,7 +152,7 @@ namespace script {
 
 		line = labelPos;
 
-		line |= 0x8000;
+		//line |= 0x8000;
 
 		*(_scriptPtr+1) = swapWord(line);
 

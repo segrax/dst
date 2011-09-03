@@ -29,7 +29,7 @@ namespace script {
 		// Runtime Data
 		byte			 _opcodeCurrent;					// Current Opcode
 		size_t			 _stackCount;						// Stack Count
-		word			 _scriptData, _scriptDataNext;		// 
+		word			 _scriptData;		// 
 		word			*_scriptPtrEnd;						// address of beginning and end of script data
 
 		bool			 headerRead();						// Read the header

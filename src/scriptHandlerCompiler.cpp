@@ -48,7 +48,7 @@ namespace script {
 
 		buffer += 0x3;
 
-		*buffer = (short int) (_scriptSize + (_pointerCount*2) + 0x1C);
+		*buffer = swapWord((short int) (_scriptSize + (_pointerCount*2) + 0x1C));
 
 		// 0x6 is WORDS, not bytes like 0x10 above
 		buffer += 0x6;

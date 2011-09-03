@@ -75,12 +75,12 @@ namespace script {
 			"PushWord",			&_scriptHandler::o_pushWord,			// 3
 			"PushByte",			&_scriptHandler::o_push,				// 4
 			"PushVar",			&_scriptHandler::o_pushreg,				// 5
-			"PushLocalVar",	&_scriptHandler::o_pushframeMinArg,			// 6
+			"PushLocalVar",		&_scriptHandler::o_pushframeMinArg,		// 6
 			"PushParameter",	&_scriptHandler::o_pushframePluArg,		// 7
 			"Pop",				&_scriptHandler::o_popret,				// 8
 			"PopReg",			&_scriptHandler::o_popreg,				// 9
-			"PopLocalVar",	&_scriptHandler::o_popframeMinArg,			// A
-			"PopParameter",	&_scriptHandler::o_popframePluArg,			// B
+			"PopLocalVar",		&_scriptHandler::o_popframeMinArg,		// A
+			"PopParameter",		&_scriptHandler::o_popframePluArg,		// B
 			"AddSP",			&_scriptHandler::o_spadd,				// C
 			"SubSP",			&_scriptHandler::o_spsub,				// D
 			"Execute",			&_scriptHandler::o_execute,				// E

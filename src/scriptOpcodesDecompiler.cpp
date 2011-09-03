@@ -43,76 +43,51 @@ namespace script {
 	}
 
 	void	_scriptHandlerDecompiler::o_setreturn(   ) {
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_pushOp(   ) {
-		word data = _scriptData;
-		if(_scriptData == 0) {
-			data = _scriptDataNext;
-
+		if(_scriptData == 0)
 			_stackCount--;
-	
-		}
+
 		if(_scriptData == 1) {
 			_stackCount--;
 			_stackCount--;
 		}
 
-		dataPrint(data);
+		dataPrint(_scriptData);
 	}
 
 	void	_scriptHandlerDecompiler::o_push(  ) {
 		_stackCount--;
 
-		if(_scriptDataNext) {
-			_scriptLastPush = _scriptDataNext;
-			dataPrint( _scriptDataNext );
-		} else {
-			_scriptLastPush = _scriptData;
-			dataPrint( _scriptData );
-		}
+		_scriptLastPush = _scriptData;
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_pushWord() {
-		_stackCount--;
-		_stackCount--;
-		_scriptLastPush = _scriptDataNext;
-		dataPrint( _scriptDataNext );
+
+		o_push();
 	}
 
 	void	_scriptHandlerDecompiler::o_pushreg(   ) {
 		_stackCount--;
 		
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_pushframeMinArg(   ) {
 		_stackCount--;
 		_stackCount--;
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_pushframePluArg(   ) {
 		_stackCount--;
 		_stackCount--;
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_popret(   ) {
@@ -130,32 +105,21 @@ namespace script {
 	void	_scriptHandlerDecompiler::o_popreg(   ) {
 		_stackCount++;
 
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
-
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_popframeMinArg(   ) {
 		_stackCount++;
 		_stackCount++;
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_popframePluArg(   ) {
 		_stackCount++;
 		_stackCount++;
-		if(_scriptDataNext) {
-			dataPrint( _scriptDataNext );
-		} else {
-			dataPrint( _scriptData );
-		}
+
+		dataPrint( _scriptData );
 	}
 
 	void	_scriptHandlerDecompiler::o_spadd(   ) {
@@ -179,32 +143,16 @@ namespace script {
 	void	_scriptHandlerDecompiler::o_ifnotgoto(   ) {
 		int labelPos;
 
-		if(_scriptDataNext) {
-			labelPos = scriptLabel( _scriptDataNext & 0x7FFF );
+		labelPos = scriptLabel( _scriptData & 0x7FFF );
 
-			if( _modePreProcess )  {
-				if( labelPos == -1)
-					scriptLabelAdd("", _scriptDataNext & 0x7FFF);
-
-			} else {
-				if( labelPos == -1)
-					dataPrint( _scriptDataNext & 0x7FFF );
-				else
-					_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
-			}
-
+		if( _modePreProcess ) {
+			if( labelPos == -1 )
+				scriptLabelAdd("", _scriptData  & 0x7FFF );
 		} else {
-			labelPos = scriptLabel( _scriptData );
-
-			if( _modePreProcess ) {
-				if( labelPos == -1 )
-					scriptLabelAdd("", _scriptData);
-			} else {
-				if( labelPos == -1)
-					dataPrint( _scriptData );
-				else
-					_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
-			}
+			if( labelPos == -1)
+				dataPrint( _scriptData  & 0x7FFF );
+			else
+				_destinationFile << "l" << _scriptLabels[labelPos]._scriptPos;
 		}
 	}
 

@@ -173,7 +173,7 @@ namespace script {
 
 		_lineCount		= 0;
 		_opcodeCurrent  = 0;
-		_scriptData		= _scriptDataNext = 0;
+		_scriptData	    = 0;
 		_scriptPtr		= 0;
 		_scriptPtrEnd	= 0;
 		_scriptPos		= 0;
@@ -185,6 +185,8 @@ namespace script {
 
 		while( _scriptPtr <  _scriptPtrEnd ) {
 
+			word lineScriptPos = _scriptPos;
+
 			if( !_modePreProcess ) {
 				scriptNextStart();
 
@@ -193,7 +195,6 @@ namespace script {
 					_destinationFile << "l" << _scriptPos << ":" << endl;
 			}
 
-			_scriptDataNext = 0;
 			_scriptData		= readWord( _scriptPtr );
 			_scriptPtr++;
 			_scriptPos++;
@@ -213,7 +214,7 @@ namespace script {
 			} else 	
 				// Opcode uses the next WORD, grab it
 				if( _scriptData & 0x2000 ) {
-					_scriptDataNext = readWord( _scriptPtr );
+					_scriptData = readWord( _scriptPtr );
 					_scriptPtr++;
 					_scriptPos++;
 				}
@@ -221,7 +222,7 @@ namespace script {
 
 			// Print opcode
 			if( !_modePreProcess )
-				_destinationFile << setw(20) << left << _opcodes[ _opcodeCurrent ].description;
+				_destinationFile << setw(20) << left <<  _opcodes[ _opcodeCurrent ].description;
 
 			// Excute opcode
 			(this->*_opcodes[ _opcodeCurrent ].function)( );
