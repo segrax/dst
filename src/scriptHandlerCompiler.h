@@ -1,6 +1,6 @@
 /* DST  -  Dune 2 Script Tools
  *  
- * Copyright (C) 2009 segra		<segra@strobs.com>
+ * Copyright (C) 2009-2014 Robert Crossfield <robcrossfield @ gmail.com>
  
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
