@@ -61,7 +61,7 @@ namespace script {
 
 		// Read File Size
 		fileScript.seekg( 0, ios::end );
-		scriptSize = fileScript.tellg();
+		scriptSize = (size_t) fileScript.tellg();
 		fileScript.seekg( ios::beg );
 
 		// Load file into _scriptBuffer
